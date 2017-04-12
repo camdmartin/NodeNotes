@@ -10,11 +10,13 @@ import UIKit
 
 class NodeViewController: UIViewController {
 	
-	let node = Node(name: "Default", value: -1)
+	@IBOutlet var nodeNavigationBar: UINavigationItem!
+	
+	var node = Node(name: "Default", value: -1)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		nodeNavigationBar.title = node.name
 	}
 	
 	override func didReceiveMemoryWarning() {

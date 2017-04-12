@@ -38,7 +38,7 @@ class MasterViewController: UITableViewController {
 	}
 
 	func insertNewObject(_ sender: Any) {
-		objects.insert(Workspace(name: "Default"), at: 0)
+		objects.insert(Workspace(name: "Test"), at: 0)
 		let indexPath = IndexPath(row: 0, section: 0)
 		self.tableView.insertRows(at: [indexPath], with: .automatic)
 	}
@@ -48,8 +48,9 @@ class MasterViewController: UITableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "showDetail" {
 		    if let indexPath = self.tableView.indexPathForSelectedRow {
-		        //let object = objects[indexPath.row]
+		        let object = objects[indexPath.row]
 		        let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+				controller.workspace = object
 		        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
 		        controller.navigationItem.leftItemsSupplementBackButton = true
 		    }

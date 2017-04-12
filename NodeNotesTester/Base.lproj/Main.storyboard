@@ -65,6 +65,7 @@
                     <navigationItem key="navigationItem" title="Chart" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
+                        <outlet property="workspaceNavigationBar" destination="mOI-FS-AaM" id="KQV-8C-Adw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
@@ -102,6 +103,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Node" id="5YR-N5-2xn"/>
+                    <connections>
+                        <outlet property="nodeNavigationBar" destination="5YR-N5-2xn" id="w0B-DK-5kc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAS-1M-uud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

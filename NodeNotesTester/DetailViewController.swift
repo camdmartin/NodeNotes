@@ -10,8 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-	let workspace = Workspace(name: "Default")
+	var workspace = Workspace(name: "Default")
 	
+	@IBOutlet var workspaceNavigationBar: UINavigationItem!
 	@IBOutlet weak var detailDescriptionLabel: UILabel!
 
 	func configureView() {
@@ -22,7 +23,7 @@ class DetailViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		workspaceNavigationBar.title = workspace.name
 		self.configureView()
 	}
 
