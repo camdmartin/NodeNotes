@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,9 +46,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyP-X8-0UA">
-                                <rect key="frame" x="164" y="418" width="46" height="30"/>
+                                <rect key="frame" x="73" y="418" width="194" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Sample Node Change"/>
                                 <connections>
                                     <segue destination="Nbf-KB-VcU" kind="show" id="azs-Kq-G6s"/>
                                 </connections>
@@ -61,19 +62,19 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Chart" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="129"/>
+            <point key="canvasLocation" x="708" y="128.18590704647679"/>
         </scene>
-        <!--View Controller-->
+        <!--Node-->
         <scene sceneID="deY-ia-18f">
             <objects>
-                <viewController id="Nbf-KB-VcU" sceneMemberID="viewController">
+                <viewController id="Nbf-KB-VcU" customClass="NodeViewController" customModule="NodeNotesTester" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gBL-Z9-5Fs"/>
                         <viewControllerLayoutGuide type="bottom" id="quE-az-Nkh"/>
@@ -82,20 +83,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SampleNode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpa-Dv-BEU">
-                                <rect key="frame" x="97" y="231" width="176" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Insert node text here" translatesAutoresizingMaskIntoConstraints="NO" id="GMM-cr-jbK">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GMM-cr-jbK" firstAttribute="leading" secondItem="DXF-KP-y87" secondAttribute="leadingMargin" id="95q-1R-ToJ"/>
+                            <constraint firstItem="GMM-cr-jbK" firstAttribute="top" secondItem="gBL-Z9-5Fs" secondAttribute="bottom" id="DGp-DA-Yks"/>
+                            <constraint firstItem="quE-az-Nkh" firstAttribute="top" secondItem="GMM-cr-jbK" secondAttribute="bottom" id="DbF-Vj-Ify"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GMM-cr-jbK" secondAttribute="trailing" id="VEM-Xf-kdd"/>
+                            <constraint firstItem="GMM-cr-jbK" firstAttribute="trailing" secondItem="DXF-KP-y87" secondAttribute="trailingMargin" id="XVl-pR-gf0"/>
+                            <constraint firstItem="GMM-cr-jbK" firstAttribute="top" secondItem="gBL-Z9-5Fs" secondAttribute="bottom" id="h3v-6y-h9U"/>
+                            <constraint firstItem="GMM-cr-jbK" firstAttribute="leading" secondItem="DXF-KP-y87" secondAttribute="leadingMargin" id="hbK-BK-xep"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Node" id="5YR-N5-2xn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAS-1M-uud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1621.5999999999999" y="137.18140929535232"/>
+            <point key="canvasLocation" x="1506" y="128"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -148,7 +158,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Workspaces" id="Zdf-7t-Un8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>

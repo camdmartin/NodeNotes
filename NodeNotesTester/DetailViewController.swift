@@ -10,8 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+	let workspace = Workspace()
+	
 	@IBOutlet weak var detailDescriptionLabel: UILabel!
-
 
 	func configureView() {
 		// Update the user interface for the detail item.
