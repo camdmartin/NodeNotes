@@ -10,16 +10,13 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-	let workspace = Workspace()
+	let workspace = Workspace(name: "Default")
 	
 	@IBOutlet weak var detailDescriptionLabel: UILabel!
 
 	func configureView() {
-		// Update the user interface for the detail item.
-		if let detail = self.detailItem {
-		    if let label = self.detailDescriptionLabel {
-		        label.text = detail.description
-		    }
+		if let label = self.detailDescriptionLabel {
+			label.text = workspace.name
 		}
 	}
 

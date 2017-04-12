@@ -11,10 +11,12 @@ import Foundation
 class Workspace {
 	
 	//contains Nodes and their locations in x-y space
+	var name: String
 	var nodeDict: [Node: (Int, Int)]
 	var nodeHashCounter = 0
 	
-	init() {
+	init(name: String) {
+		self.name = name
 		nodeDict = [:]
 	}
 	
