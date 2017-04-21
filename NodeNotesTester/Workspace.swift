@@ -26,4 +26,17 @@ class Workspace {
 		nodeDict[newNode] = (0, 0)
 	}
 	
+	func createNodeWithName(name: String, x: Int, y: Int) {
+		let newNode = Node(name: name, value: nodeHashCounter)
+		
+		nodeHashCounter += 1
+		
+		nodeDict[newNode] = (x, y)
+	}
+	
+	func addTestData() {
+		createNodeWithName(name: "Test1", x: 50, y: 50)
+		createNodeWithName(name: "Test2", x: 100, y: 200)
+		createNodeWithName(name: "Test3", x: 200, y: 400)
+	}
 }

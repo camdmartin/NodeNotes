@@ -16,6 +16,7 @@
 		A413B6A11E9BE57300793989 /* NodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6A01E9BE57300793989 /* NodeViewController.swift */; };
 		A413B6A31E9E85FF00793989 /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6A21E9E85FF00793989 /* Workspace.swift */; };
 		A413B6A51E9E863C00793989 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6A41E9E863C00793989 /* Node.swift */; };
+		A413B6A71E9EA35F00793989 /* NodeSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6A61E9EA35E00793989 /* NodeSelectButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A413B6A01E9BE57300793989 /* NodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeViewController.swift; sourceTree = "<group>"; };
 		A413B6A21E9E85FF00793989 /* Workspace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workspace.swift; sourceTree = "<group>"; };
 		A413B6A41E9E863C00793989 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		A413B6A61E9EA35E00793989 /* NodeSelectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeSelectButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				A413B68C1E9BDDB500793989 /* AppDelegate.swift */,
 				A413B68E1E9BDDB500793989 /* MasterViewController.swift */,
 				A413B6901E9BDDB500793989 /* DetailViewController.swift */,
+				A413B6A61E9EA35E00793989 /* NodeSelectButton.swift */,
 				A413B6921E9BDDB500793989 /* Main.storyboard */,
 				A413B6A21E9E85FF00793989 /* Workspace.swift */,
 				A413B6A41E9E863C00793989 /* Node.swift */,
@@ -151,6 +154,7 @@
 				A413B6A11E9BE57300793989 /* NodeViewController.swift in Sources */,
 				A413B6911E9BDDB500793989 /* DetailViewController.swift in Sources */,
 				A413B6A31E9E85FF00793989 /* Workspace.swift in Sources */,
+				A413B6A71E9EA35F00793989 /* NodeSelectButton.swift in Sources */,
 				A413B6A51E9E863C00793989 /* Node.swift in Sources */,
 				A413B68F1E9BDDB500793989 /* MasterViewController.swift in Sources */,
 				A413B68D1E9BDDB500793989 /* AppDelegate.swift in Sources */,
