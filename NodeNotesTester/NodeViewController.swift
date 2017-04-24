@@ -8,9 +8,11 @@
 
 import UIKit
 
-class NodeViewController: UIViewController {
+class NodeViewController: UIViewController, UITextViewDelegate {
 	
 	@IBOutlet var nodeNavigationBar: UINavigationItem!
+	
+	@IBOutlet var nodeTextView: UITextView!
 	
 	var node = Node(name: "Default", value: -1)
 	
@@ -19,9 +21,23 @@ class NodeViewController: UIViewController {
 		nodeNavigationBar.title = node.name
 	}
 	
+	override func viewWillDisappear(_ animated : Bool) {
+		super.viewWillDisappear(animated)
+		
+		if (self.isMovingFromParentViewController) {
+			node.text = nodeTextView.text
+						
+		}
+	}
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
+	}
+	
+	func textViewDidChange(_ textView: UITextView) {
+		node.text = textView.text
+		print("text changed to \(textView.text)")
 	}
 	
 }

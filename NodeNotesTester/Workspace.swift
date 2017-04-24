@@ -12,26 +12,35 @@ class Workspace {
 	
 	//contains Nodes and their locations in x-y space
 	var name: String
-	var nodeDict: [Node: (Int, Int)]
+	var nodes: [Node]
 	var nodeHashCounter = 0
 	
 	init(name: String) {
 		self.name = name
-		nodeDict = [:]
+		nodes = []
 	}
 	
 	func createNode() {
 		let newNode = Node(name: "New", value: nodeHashCounter)
 		
-		nodeDict[newNode] = (0, 0)
+		nodes.append(newNode)
+	}
+	
+	func updateNode(node: Node) {
+		if nodes.contains(node) {
+			nodes[nodes.index(of: node)!] = node
+		} else {
+			print("node to be updated does not exist")
+		}
 	}
 	
 	func createNodeWithName(name: String, x: Int, y: Int) {
 		let newNode = Node(name: name, value: nodeHashCounter)
+		newNode.location = (x,y)
 		
 		nodeHashCounter += 1
 		
-		nodeDict[newNode] = (x, y)
+		nodes.append(newNode)
 	}
 	
 	func addTestData() {

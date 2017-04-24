@@ -65,7 +65,7 @@
                                 <rect key="frame" x="16" y="20" width="343" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,11 +82,12 @@
                     <navigationItem key="navigationItem" title="Node" id="5YR-N5-2xn"/>
                     <connections>
                         <outlet property="nodeNavigationBar" destination="5YR-N5-2xn" id="w0B-DK-5kc"/>
+                        <outlet property="nodeTextView" destination="GMM-cr-jbK" id="6En-z4-EOb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAS-1M-uud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1506" y="128"/>
+            <point key="canvasLocation" x="1504.8" y="127.28635682158921"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
