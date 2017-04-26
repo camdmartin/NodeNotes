@@ -26,8 +26,15 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		
 		if (self.isMovingFromParentViewController) {
 			node.text = nodeTextView.text
-						
+			print("returning to workspace")
 		}
+	}
+	
+	override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+		node.text = nodeTextView.text
+		let detail = subsequentVC as! DetailViewController
+		detail.workspace?.updateNode(node: node)
+		print("unwind segue triggered")
 	}
 	
 	override func didReceiveMemoryWarning() {

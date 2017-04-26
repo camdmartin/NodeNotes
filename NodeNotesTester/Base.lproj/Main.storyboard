@@ -43,6 +43,7 @@
                     <navigationItem key="navigationItem" title="Chart" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="workspaceNavigationBar" destination="mOI-FS-AaM" id="KQV-8C-Adw"/>
+                        <segue destination="Nbf-KB-VcU" kind="show" identifier="showNode" id="i2a-ss-wqO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
@@ -62,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Insert node text here" translatesAutoresizingMaskIntoConstraints="NO" id="GMM-cr-jbK">
-                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet"/>

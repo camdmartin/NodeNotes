@@ -14,8 +14,6 @@ class DetailViewController: UIViewController {
 	var selectNodeButtons = [NodeSelectButton]()
 	var selectedNode: Node?
 	
-	@IBOutlet var toNode: UIButton!
-	
 	@IBOutlet var workspaceNavigationBar: UINavigationItem!
 	
 	override func viewDidLoad() {
@@ -30,7 +28,7 @@ class DetailViewController: UIViewController {
 		selectedNode = sender.associatedNode
 		
 		guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "NodeViewController") as? NodeViewController else {
-			print("Could not instantiate view controller with identifier of type SecondViewController")
+			print("Could not instantiate view controller with identifier of type NodeViewController")
 			return
 		}
 		
@@ -39,6 +37,7 @@ class DetailViewController: UIViewController {
 	}
 	
 	func addNodeSelectButton(node: Node, x: Int, y: Int)->NodeSelectButton {
+		
 		let btn: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(x: x, y: y, width: 50, height: 50))
 		btn.backgroundColor = UIColor.green
 		btn.setTitle(node.name, for: .normal)
