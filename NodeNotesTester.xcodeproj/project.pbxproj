@@ -17,6 +17,7 @@
 		A413B6A31E9E85FF00793989 /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6A21E9E85FF00793989 /* Workspace.swift */; };
 		A413B6A51E9E863C00793989 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6A41E9E863C00793989 /* Node.swift */; };
 		A413B6A71E9EA35F00793989 /* NodeSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6A61E9EA35E00793989 /* NodeSelectButton.swift */; };
+		A413B6AB1EB7961400793989 /* WorkspaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6AA1EB7961400793989 /* WorkspaceStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		A413B6A21E9E85FF00793989 /* Workspace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workspace.swift; sourceTree = "<group>"; };
 		A413B6A41E9E863C00793989 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		A413B6A61E9EA35E00793989 /* NodeSelectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeSelectButton.swift; sourceTree = "<group>"; };
+		A413B6AA1EB7961400793989 /* WorkspaceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkspaceStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				A413B6A21E9E85FF00793989 /* Workspace.swift */,
 				A413B6A41E9E863C00793989 /* Node.swift */,
 				A413B6A01E9BE57300793989 /* NodeViewController.swift */,
+				A413B6AA1EB7961400793989 /* WorkspaceStore.swift */,
 				A413B6951E9BDDB500793989 /* Assets.xcassets */,
 				A413B6971E9BDDB500793989 /* LaunchScreen.storyboard */,
 				A413B69A1E9BDDB500793989 /* Info.plist */,
@@ -154,6 +157,7 @@
 				A413B6A11E9BE57300793989 /* NodeViewController.swift in Sources */,
 				A413B6911E9BDDB500793989 /* DetailViewController.swift in Sources */,
 				A413B6A31E9E85FF00793989 /* Workspace.swift in Sources */,
+				A413B6AB1EB7961400793989 /* WorkspaceStore.swift in Sources */,
 				A413B6A71E9EA35F00793989 /* NodeSelectButton.swift in Sources */,
 				A413B6A51E9E863C00793989 /* Node.swift in Sources */,
 				A413B68F1E9BDDB500793989 /* MasterViewController.swift in Sources */,

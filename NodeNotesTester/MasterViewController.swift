@@ -11,8 +11,6 @@ import UIKit
 class MasterViewController: UITableViewController {
 
 	var detailViewController: DetailViewController? = nil
-	var objects = [Workspace]()
-
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -41,7 +39,7 @@ class MasterViewController: UITableViewController {
 		let newWorkspace = Workspace(name: "Test")
 		newWorkspace.addTestData()
 		
-		objects.insert(newWorkspace, at: 0)
+		WorkspaceStore.sharedWorkspaceStore.createWorkspace(workspace: newWorkspace)
 		let indexPath = IndexPath(row: 0, section: 0)
 		self.tableView.insertRows(at: [indexPath], with: .automatic)
 	}
@@ -51,13 +49,15 @@ class MasterViewController: UITableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "showDetail" {
 		    if let indexPath = self.tableView.indexPathForSelectedRow {
-		        let workspace = objects[indexPath.row]
+		        let workspaceIndex = indexPath.row
 		        let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-				controller.workspace = workspace
-				controller.workspaceNavigationBar.title = workspace.name
+				controller.workspaceIndex = workspaceIndex
+				controller.workspaceNavigationBar.title = WorkspaceStore.sharedWorkspaceStore.workspaces[workspaceIndex].name
 				
-				for n in workspace.nodes {
-					controller.selectNodeButtons.append(controller.addNodeSelectButton(node: n, x: n.location.0, y: n.location.1))
+				for n in 0 ..< WorkspaceStore.sharedWorkspaceStore.workspaces[workspaceIndex].nodes.count {
+					let node = WorkspaceStore.sharedWorkspaceStore.workspaces[workspaceIndex].nodes[n]
+					
+					controller.selectNodeButtons.append(controller.addNodeSelectButton(workspaceIndex: workspaceIndex, nodeID: n, x: node.location.0, y: node.location.1))
 				}
 				
 		        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
@@ -73,13 +73,13 @@ class MasterViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return objects.count
+		return WorkspaceStore.sharedWorkspaceStore.workspaces.count
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-		let object = objects[indexPath.row]
+		let object = WorkspaceStore.sharedWorkspaceStore.workspaces[indexPath.row]
 		cell.textLabel!.text = object.name
 		return cell
 	}
@@ -91,7 +91,7 @@ class MasterViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
-		    objects.remove(at: indexPath.row)
+		    WorkspaceStore.sharedWorkspaceStore.workspaces.remove(at: indexPath.row)
 		    tableView.deleteRows(at: [indexPath], with: .fade)
 		} else if editingStyle == .insert {
 		    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-	var workspace: Workspace?
+	var workspaceIndex: Int?
 	var selectNodeButtons = [NodeSelectButton]()
 	var selectedNode: Node?
 	
@@ -25,26 +25,29 @@ class DetailViewController: UIViewController {
 	}
 	
 	func selectNode(sender: NodeSelectButton) {
-		selectedNode = sender.associatedNode
+		selectedNode = WorkspaceStore.sharedWorkspaceStore.workspaces[sender.associatedWorkspaceIndex!].nodes[sender.associatedNodeID!]
 		
 		guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "NodeViewController") as? NodeViewController else {
 			print("Could not instantiate view controller with identifier of type NodeViewController")
 			return
 		}
 		
-		vc.node = selectedNode!
+		vc.nodeID = sender.associatedNodeID
+		vc.workspaceIndex = sender.associatedWorkspaceIndex
 		self.navigationController?.pushViewController(vc, animated:true)
 	}
 	
-	func addNodeSelectButton(node: Node, x: Int, y: Int)->NodeSelectButton {
+	func addNodeSelectButton(workspaceIndex: Int, nodeID: Int, x: Int, y: Int)->NodeSelectButton {
 		
-		let btn: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(x: x, y: y, width: 50, height: 50))
+		let btn: NodeSelectButton = NodeSelectButton(workspaceIndex: workspaceIndex, nodeID: nodeID, frame: CGRect(x: x, y: y, width: 50, height: 50))
 		btn.backgroundColor = UIColor.green
-		btn.setTitle(node.name, for: .normal)
+		let nodeName = WorkspaceStore.sharedWorkspaceStore.workspaces[workspaceIndex].nodes[nodeID].name
+		
+		btn.setTitle(nodeName, for: .normal)
 		btn.addTarget(self, action: #selector(selectNode), for: .touchUpInside)
 		btn.tag = 1
 		self.view.addSubview(btn)
-		print("button \(node.name) added")
+		print("button \(nodeName) added")
 		
 		return btn
 	}

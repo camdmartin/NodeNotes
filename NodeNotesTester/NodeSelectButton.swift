@@ -10,10 +10,12 @@ import UIKit
 
 class NodeSelectButton: UIButton {
 	
-	var associatedNode: Node?
+	var associatedWorkspaceIndex: Int?
+	var associatedNodeID: Int?
 	
-	required init(node: Node, frame: CGRect) {
-		self.associatedNode = node
+	required init(workspaceIndex: Int, nodeID: Int, frame: CGRect) {
+		self.associatedWorkspaceIndex = workspaceIndex
+		self.associatedNodeID = nodeID
 		
 		super.init(frame: frame)
 	}

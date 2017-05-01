@@ -80,10 +80,17 @@
                             <constraint firstItem="GMM-cr-jbK" firstAttribute="leading" secondItem="DXF-KP-y87" secondAttribute="leadingMargin" id="hbK-BK-xep"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Node" id="5YR-N5-2xn"/>
+                    <navigationItem key="navigationItem" title="Node" id="5YR-N5-2xn">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Fi3-VQ-2yf">
+                            <connections>
+                                <action selector="saveText:" destination="Nbf-KB-VcU" id="cLf-Hv-foQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nodeNavigationBar" destination="5YR-N5-2xn" id="w0B-DK-5kc"/>
                         <outlet property="nodeTextView" destination="GMM-cr-jbK" id="6En-z4-EOb"/>
+                        <outlet property="saveTextButton" destination="Fi3-VQ-2yf" id="ufM-hb-Qum"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAS-1M-uud" userLabel="First Responder" sceneMemberID="firstResponder"/>
