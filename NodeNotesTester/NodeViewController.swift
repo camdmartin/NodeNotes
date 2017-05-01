@@ -19,6 +19,7 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		nodeNavigationBar.title = node.name
+		nodeTextView.text = node.text
 	}
 	
 	override func viewWillDisappear(_ animated : Bool) {
