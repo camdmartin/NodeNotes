@@ -84,7 +84,11 @@
                         <barButtonItem title="Item" id="bM9-CA-Uly"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Node" id="5YR-N5-2xn">
-                        <barButtonItem key="rightBarButtonItem" title="Link" id="5Cw-Sm-pLR"/>
+                        <barButtonItem key="rightBarButtonItem" title="Link" id="5Cw-Sm-pLR">
+                            <connections>
+                                <action selector="buttonTouched:" destination="Nbf-KB-VcU" id="4Mv-5t-ON8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
