@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
 		selectNodeButtons.append(addNodeSelectButton(node: n, x: n.location.0, y: n.location.1))
 		
 		self.view.setNeedsDisplay()
-		print("new button added")
+		//print("new button added")
 	}
 	
 	func getRandomPointInView() -> (Int, Int) {
@@ -39,6 +39,11 @@ class DetailViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		for btn in selectNodeButtons {
+			print("node name is \(btn.associatedNode?.name)")
+			btn.setTitle(btn.associatedNode?.name, for: .normal)
+		}
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -65,7 +70,7 @@ class DetailViewController: UIViewController {
 		btn.addTarget(self, action: #selector(selectNode), for: .touchUpInside)
 		btn.tag = 1
 		self.view.addSubview(btn)
-		print("button \(node.name) added")
+		//print("button \(node.name) added")
 		
 		return btn
 	}

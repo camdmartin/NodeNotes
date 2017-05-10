@@ -75,6 +75,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet"/>
                             </textView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jd3-DR-eYk">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Rename" id="dm0-kf-f2L">
+                                        <connections>
+                                            <action selector="renameNode:" destination="Nbf-KB-VcU" id="BtU-rs-Kg5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Link" id="N51-Eo-Wd1">
+                                        <connections>
+                                            <action selector="createLink:" destination="Nbf-KB-VcU" id="tjC-zC-edd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -87,21 +103,13 @@
                             <constraint firstItem="GMM-cr-jbK" firstAttribute="leading" secondItem="DXF-KP-y87" secondAttribute="leadingMargin" id="hbK-BK-xep"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="bM9-CA-Uly"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Node" id="5YR-N5-2xn">
-                        <barButtonItem key="rightBarButtonItem" title="Link" id="5Cw-Sm-pLR">
-                            <connections>
-                                <action selector="buttonTouched:" destination="Nbf-KB-VcU" id="4Mv-5t-ON8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Node" id="5YR-N5-2xn"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="Link" destination="5Cw-Sm-pLR" id="1VP-sH-JCg"/>
                         <outlet property="nodeNavigationBar" destination="5YR-N5-2xn" id="w0B-DK-5kc"/>
                         <outlet property="nodeTextView" destination="GMM-cr-jbK" id="6En-z4-EOb"/>
+                        <outlet property="toolbar" destination="jd3-DR-eYk" id="39j-RJ-UaU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAS-1M-uud" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -135,11 +143,11 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

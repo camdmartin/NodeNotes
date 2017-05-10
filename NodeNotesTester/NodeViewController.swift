@@ -10,19 +10,35 @@ import UIKit
 
 class NodeViewController: UIViewController, UITextViewDelegate {
 	
-    @IBOutlet var link: UIBarButtonItem!
-    
-    @IBAction func buttonTouched(_ sender: Any) {
-        var alertController: UIAlertController?
-        alertController = UIAlertController(title: "Enter Text", message: "Link Text", preferredStyle: .alert)
-        alertController!.addTextField { (textField: UITextField) in
-            textField.placeholder = "enter something"
-        }
-        self.present(alertController!,
-                                   animated: true,
-                                   completion: nil)
-    }
-
+	@IBOutlet var toolbar: UIToolbar!
+	
+	/*@IBAction func buttonTouched(_ sender: UIBarButtonItem) {
+		var alertController: UIAlertController?
+		alertController = UIAlertController(title: "Enter Text", message: "Link Text", preferredStyle: .alert)
+		alertController!.addTextField { (textField: UITextField) in
+			textField.placeholder = "enter something"
+		}
+		
+		self.present(alertController!, animated: true, completion: nil)
+	}*/
+	
+	@IBAction func renameNode(_ sender: UIBarButtonItem) {
+		var alertController: UIAlertController?
+		alertController = UIAlertController(title: "Rename", message: "", preferredStyle: .alert)
+		alertController!.addTextField { (textField: UITextField) in
+			textField.placeholder = self.node.name
+		}
+		
+		let renameAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
+			self.node.name = (alertController?.textFields?[0].text)!
+			self.nodeNavigationBar.title = self.node.name
+		}
+		
+		alertController?.addAction(renameAction)
+		
+		self.present(alertController!, animated: true, completion: nil)
+	}
+	
 	@IBOutlet var nodeNavigationBar: UINavigationItem!
 	
 	@IBOutlet var nodeTextView: UITextView!
@@ -31,19 +47,20 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        
-        let btn1 = UIButton(type: .custom)
-        btn1.titleLabel?.text = "Link"
-        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        btn1.addTarget(self, action: #selector(createLink), for: .touchUpInside)
-        let link = UIBarButtonItem(customView: btn1)
-        link.title = "Link"
-        
+		
+		/*let btn1 = UIButton(type: .custom)
+		btn1.titleLabel?.text = "Link"
+		btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+		btn1.addTarget(self, action: #selector(createLink), for: .touchUpInside)
+		let link = UIBarButtonItem(customView: btn1)
+		link.title = "Link"
+		toolbar.items?.append(link)*/
+		
 		nodeNavigationBar.title = node.name
 		nodeTextView.text = node.text
-        
-        nodeNavigationBar.setRightBarButtonItems([link], animated: true)
-
+		
+		//nodeNavigationBar.setRightBarButtonItems([link], animated: true)
+		
 	}
 	
 	override func viewWillDisappear(_ animated : Bool) {
@@ -64,37 +81,38 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		node.text = textView.text
 		print("text changed to \(textView.text)")
 	}
-    
-    func createLink() {
-        var alertController: UIAlertController?
-        alertController = UIAlertController(title: "Enter Text", message: "Link Text", preferredStyle: .alert)
-        alertController!.addTextField { (textField: UITextField) in
-            textField.placeholder = "enter something"
-        }
-        let action = UIAlertAction(title: "Submit",
-                                   style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
-                                    (paramAction:UIAlertAction!) in
-                                    if let textFields = alertController?.textFields{
-                                        let theTextFields = textFields as [UITextField]
-                                        var enteredText = theTextFields[0].text
-                                        let enteredString = NSAttributedString(
-                                            string: enteredText!,
-                                            attributes: [NSFontAttributeName:UIFont(
-                                                name: "Georgia",
-                                                size: 18.0)!, NSForegroundColorAttributeName: UIColor.blue])
-                                        enteredText = enteredString.string
-                                        self?.nodeTextView.text = (self?.nodeTextView.text)! + " " + enteredText!
-                                    }
-        })
-        alertController?.addAction(action)
-        self.present(alertController!,
-                     animated: true,
-                     completion: nil)
-    
-
-        print("Linked")
-    }
+	
+	@IBAction func createLink(_ sender: UIBarButtonItem) {
+		var alertController: UIAlertController?
+		alertController = UIAlertController(title: "Enter Text", message: "Link Text", preferredStyle: .alert)
+		alertController!.addTextField {
+			(textField: UITextField) in textField.placeholder = "enter something"
+		}
+		
+		let action = UIAlertAction(title: "Submit",
+		                           style: UIAlertActionStyle.default,
+		                           handler: {[weak self]
+									(paramAction:UIAlertAction!) in
+									if let textFields = alertController?.textFields{
+										let theTextFields = textFields as [UITextField]
+										var enteredText = theTextFields[0].text
+										let enteredString = NSAttributedString(
+											string: enteredText!,
+											attributes: [NSFontAttributeName:UIFont(
+												name: "Georgia",
+												size: 18.0)!, NSForegroundColorAttributeName: UIColor.blue])
+										enteredText = enteredString.string
+										self?.nodeTextView.text = (self?.nodeTextView.text)! + " " + enteredText!
+									}
+		})
+		alertController?.addAction(action)
+		self.present(alertController!,
+		             animated: true,
+		             completion: nil)
+		
+		
+		print("Linked")
+	}
 	
 }
 
