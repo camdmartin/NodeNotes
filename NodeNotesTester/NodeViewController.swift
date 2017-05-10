@@ -83,7 +83,7 @@ class NodeViewController: UIViewController, UITextViewDelegate {
                                             attributes: [NSFontAttributeName:UIFont(
                                                 name: "Georgia",
                                                 size: 18.0)!, NSForegroundColorAttributeName: UIColor.blue])
-                                        enteredText = enteredString.
+                                        enteredText = enteredString.string
                                         self?.nodeTextView.text = (self?.nodeTextView.text)! + " " + enteredText!
                                     }
         })

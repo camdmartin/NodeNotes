@@ -20,10 +20,14 @@ class Workspace {
 		nodes = []
 	}
 	
-	func createNode() {
+	func createNode() -> Node {
 		let newNode = Node(name: "New", value: nodeHashCounter)
 		
 		nodes.append(newNode)
+		
+		nodeHashCounter += 1
+		
+		return newNode
 	}
 	
 	func updateNode(node: Node) {

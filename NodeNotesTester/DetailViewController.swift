@@ -16,6 +16,27 @@ class DetailViewController: UIViewController {
 	
 	@IBOutlet var workspaceNavigationBar: UINavigationItem!
 	
+	@IBOutlet var addNewNode: UIBarButtonItem!
+	
+	@IBAction func addNode(_ sender: UIBarButtonItem) {
+		let n = workspace!.createNode()
+		
+		//once moving nodes is in, change this to add at a static location
+		n.location = getRandomPointInView()
+			
+		selectNodeButtons.append(addNodeSelectButton(node: n, x: n.location.0, y: n.location.1))
+		
+		self.view.setNeedsDisplay()
+		print("new button added")
+	}
+	
+	func getRandomPointInView() -> (Int, Int) {
+		let x = arc4random_uniform(UInt32(self.view.frame.width - 80)) + 40
+		let y = arc4random_uniform(UInt32(self.view.frame.height - 80)) + 40
+		
+		return (Int(x), Int(y))
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 	}
