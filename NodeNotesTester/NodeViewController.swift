@@ -47,7 +47,7 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		
 		if (self.isMovingFromParentViewController) {
 			node.text = nodeTextView.text
-			print("returning to workspace")
+			//print("returning to workspace")
 		}
 	}
 	
@@ -55,12 +55,7 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-	
-	func textViewDidChange(_ textView: UITextView) {
-		node.text = textView.text
-		print("text changed to \(textView.text)")
-	}
-	
+
 	@IBAction func createLink(_ sender: UIBarButtonItem) {
 		var alertController: UIAlertController?
 		alertController = UIAlertController(title: "Enter Text", message: "Link Text", preferredStyle: .alert)
