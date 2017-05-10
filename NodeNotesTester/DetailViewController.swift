@@ -39,11 +39,20 @@ class DetailViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		for btn in selectNodeButtons {
-			print("node name is \(btn.associatedNode?.name)")
-			btn.setTitle(btn.associatedNode?.name, for: .normal)
+
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		for btn in self.view.subviews {
+			if let b = btn as? NodeSelectButton {
+				print("node name is \(b.associatedNode?.name)")
+				b.setTitle(b.associatedNode?.name, for: .normal)
+				b.setNeedsDisplay()
+			}
 		}
+		
+		self.view.setNeedsDisplay()
+
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -74,20 +83,6 @@ class DetailViewController: UIViewController {
 		
 		return btn
 	}
-	
-	// MARK: - Segues
-	
-	/*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "showNode" {
-			let controller = (segue.destination as! UINavigationController).topViewController as! NodeViewController
-			if let n = selectedNode {
-				controller.node = n
-				controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-				controller.navigationItem.leftItemsSupplementBackButton = true
-			}
-			
-		}
-	}*/
 
 }
 
