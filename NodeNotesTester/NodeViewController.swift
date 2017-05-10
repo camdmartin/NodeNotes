@@ -12,16 +12,6 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	
 	@IBOutlet var toolbar: UIToolbar!
 	
-	/*@IBAction func buttonTouched(_ sender: UIBarButtonItem) {
-		var alertController: UIAlertController?
-		alertController = UIAlertController(title: "Enter Text", message: "Link Text", preferredStyle: .alert)
-		alertController!.addTextField { (textField: UITextField) in
-			textField.placeholder = "enter something"
-		}
-		
-		self.present(alertController!, animated: true, completion: nil)
-	}*/
-	
 	@IBAction func renameNode(_ sender: UIBarButtonItem) {
 		var alertController: UIAlertController?
 		alertController = UIAlertController(title: "Rename", message: "", preferredStyle: .alert)
@@ -48,19 +38,8 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		/*let btn1 = UIButton(type: .custom)
-		btn1.titleLabel?.text = "Link"
-		btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-		btn1.addTarget(self, action: #selector(createLink), for: .touchUpInside)
-		let link = UIBarButtonItem(customView: btn1)
-		link.title = "Link"
-		toolbar.items?.append(link)*/
-		
 		nodeNavigationBar.title = node.name
 		nodeTextView.text = node.text
-		
-		//nodeNavigationBar.setRightBarButtonItems([link], animated: true)
-		
 	}
 	
 	override func viewWillDisappear(_ animated : Bool) {
