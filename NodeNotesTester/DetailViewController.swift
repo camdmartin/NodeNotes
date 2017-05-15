@@ -28,7 +28,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		//once moving nodes is in, change this to add at a static location
 		n.location = getRandomPointInView()
 		
-		selectNodeButtons.append(addNodeSelectButton(node: n, x: n.location.0, y: n.location.1))
+		selectNodeButtons.append(addNodeSelectButton(node: n, point: n.location))
 		
 		self.view.setNeedsDisplay()
 		//print("new button added")
@@ -51,11 +51,11 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		self.present(alertController!, animated: true, completion: nil)
 	}
 	
-	func getRandomPointInView() -> (Int, Int) {
+	func getRandomPointInView() -> CGPoint {
 		let x = arc4random_uniform(UInt32(self.view.frame.width - 80)) + 40
 		let y = arc4random_uniform(UInt32(self.view.frame.height - 80)) + 40
 		
-		return (Int(x), Int(y))
+		return CGPoint(x: Int(x), y: Int(y))
 	}
 	
 	override func viewDidLoad() {
@@ -115,9 +115,9 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		self.navigationController?.pushViewController(vc, animated:true)
 	}
 	
-	func addNodeSelectButton(node: Node, x: Int, y: Int)->NodeSelectButton {
+	func addNodeSelectButton(node: Node, point: CGPoint)->NodeSelectButton {
 		
-		let btn: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(x: x, y: y, width: 50, height: 50))
+		let btn: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(origin: point, size: CGSize(width: 40, height: 40)))
 		btn.layer.cornerRadius = 0.5 * btn.bounds.size.width
 		btn.layer.borderWidth = 3
 		btn.layer.borderColor = UIColor.gray.cgColor
@@ -146,6 +146,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	                      y:view.center.y + translation.y)
 		}
 		recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
+		let btn = recognizer.view as! NodeSelectButton
+		btn.associatedNode?.location = btn.frame.origin
 	}
 	
 }

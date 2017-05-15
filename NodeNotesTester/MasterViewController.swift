@@ -61,7 +61,7 @@ class MasterViewController: UITableViewController {
 				controller.workspaceNavigationBar.title = workspace.name
 				
 				for n in workspace.nodes {
-					controller.selectNodeButtons.append(controller.addNodeSelectButton(node: n, x: n.location.0, y: n.location.1))
+					controller.selectNodeButtons.append(controller.addNodeSelectButton(node: n, point: n.location))
 				}
 				
 		        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem

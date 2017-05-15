@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Workspace {
 	
@@ -40,7 +41,7 @@ class Workspace {
 	
 	func createNodeWithName(name: String, x: Int, y: Int) {
 		let newNode = Node(name: name, value: nodeHashCounter)
-		newNode.location = (x,y)
+		newNode.location = CGPoint(x: x, y: y)
 		
 		nodeHashCounter += 1
 		
