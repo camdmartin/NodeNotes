@@ -77,12 +77,13 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 										var enteredText = theTextFields[0].text
 										let enteredString = NSAttributedString(
 											string: enteredText!,
-											attributes: [NSFontAttributeName:UIFont(
+											attributes: [NSFontAttributeName: UIFont(
 												name: "Georgia",
-												size: 18.0)!, NSForegroundColorAttributeName: UIColor.blue])
+												size: 9.0)!, NSForegroundColorAttributeName: UIColor.blue])
 										enteredText = enteredString.string
-										self?.nodeTextView.text = (self?.nodeTextView.text)! + " " + enteredText!
+										self?.nodeTextView.attributedText = /**(self?.nodeTextView.text)! + " " + **/enteredString
 									}
+                                    
 		})
 		alertController?.addAction(action)
 		self.present(alertController!,
