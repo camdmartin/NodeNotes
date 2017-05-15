@@ -14,6 +14,10 @@ class DetailViewController: UIViewController {
 	var selectNodeButtons = [NodeSelectButton]()
 	var selectedNode: Node?
 	
+	@IBOutlet var renameButton: UIBarButtonItem!
+	
+	@IBOutlet var toolbar: UIToolbar!
+	
 	@IBOutlet var workspaceNavigationBar: UINavigationItem!
 	
 	@IBOutlet var addNewNode: UIBarButtonItem!
@@ -28,6 +32,23 @@ class DetailViewController: UIViewController {
 		
 		self.view.setNeedsDisplay()
 		//print("new button added")
+	}
+	
+	@IBAction func renameChart(_ sender: UIBarButtonItem) {
+		var alertController: UIAlertController?
+		alertController = UIAlertController(title: "Rename", message: "", preferredStyle: .alert)
+		alertController!.addTextField { (textField: UITextField) in
+			textField.placeholder = self.workspace?.name
+		}
+		
+		let renameAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
+			self.workspace?.name = (alertController?.textFields?[0].text)!
+			self.workspaceNavigationBar.title = self.workspace?.name
+		}
+		
+		alertController?.addAction(renameAction)
+		
+		self.present(alertController!, animated: true, completion: nil)
 	}
 	
 	func getRandomPointInView() -> (Int, Int) {

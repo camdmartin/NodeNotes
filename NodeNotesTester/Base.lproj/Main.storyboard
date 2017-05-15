@@ -37,6 +37,19 @@
                     <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fto-2F-YwJ">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Rename" id="qmx-68-70t">
+                                        <connections>
+                                            <action selector="renameChart:" destination="JEX-9P-axG" id="KKT-Z1-dCe"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <toolbarItems/>
@@ -49,6 +62,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addNewNode" destination="w8H-hO-W18" id="zo7-oT-Bfq"/>
+                        <outlet property="renameButton" destination="qmx-68-70t" id="VgS-J1-Smf"/>
+                        <outlet property="toolbar" destination="fto-2F-YwJ" id="6Zz-Tp-9x1"/>
                         <outlet property="workspaceNavigationBar" destination="mOI-FS-AaM" id="KQV-8C-Adw"/>
                         <segue destination="Nbf-KB-VcU" kind="show" identifier="showNode" id="i2a-ss-wqO"/>
                     </connections>
