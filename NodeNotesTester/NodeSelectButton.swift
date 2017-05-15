@@ -16,6 +16,7 @@ class NodeSelectButton: UIButton {
 		self.associatedNode = node
 		
 		super.init(frame: frame)
+		self.isUserInteractionEnabled = true
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
