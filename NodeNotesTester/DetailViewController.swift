@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	var workspace: Workspace?
 	var selectNodeButtons = [NodeSelectButton]()
@@ -129,6 +129,10 @@ class DetailViewController: UIViewController {
 		btn.addTarget(self, action: #selector(selectNode), for: .touchUpInside)
 		btn.tag = 1
 		self.view.addSubview(btn)
+		
+		let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DetailViewController.handlePan(_:)))
+		gestureRecognizer.delegate = self
+		btn.addGestureRecognizer(gestureRecognizer)
 		//print("button \(node.name) added")
 		
 		return btn
