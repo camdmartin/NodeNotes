@@ -52,15 +52,16 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		self.present(alertController!, animated: true, completion: nil)
 	}
 	
-	func renameNode(node: Node) {
+	func renameNodeButton(button: NodeSelectButton) {
 		var alertController: UIAlertController?
 		alertController = UIAlertController(title: "Rename", message: "", preferredStyle: .alert)
 		alertController!.addTextField { (textField: UITextField) in
-			textField.placeholder = node.name
+			textField.placeholder = button.associatedNode?.name
 		}
 		
 		let renameAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
-			node.name = (alertController?.textFields?[0].text)!
+			button.associatedNode?.name = (alertController?.textFields?[0].text)!
+			button.setTitle(button.associatedNode?.name, for: .normal)
 		}
 		
 		alertController?.addAction(renameAction)
@@ -81,8 +82,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
-		for btn in self.view.subviews {
-			if let b = btn as? NodeSelectButton {
+		for button in self.view.subviews {
+			if let b = button as? NodeSelectButton {
 				b.setTitle(b.associatedNode?.name, for: .normal)
 				setNodeTitleFontSize(button: b)
 			}
@@ -105,11 +106,9 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		case 0..<4:
 			fontSize = 20
 		case 4..<6:
-			fontSize = 16
-		case 6..<10:
+			fontSize = 14
+		case 6..<9:
 			fontSize = 12
-		case 10..<20:
-			fontSize = 8
 		default:
 			fontSize = 8
 		}
@@ -134,29 +133,30 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	func addNodeSelectButton(node: Node, point: CGPoint)->NodeSelectButton {
 		
-		let btn: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(origin: point, size: CGSize(width: defaultNodeSize, height: defaultNodeSize)))
-		btn.layer.cornerRadius = 0.5 * btn.bounds.size.width
-		btn.layer.borderWidth = 3
-		btn.layer.borderColor = UIColor.gray.cgColor
-		//btn.backgroundColor = UIColor.green
-		btn.setTitle(node.name, for: .normal)
-		btn.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 14)
-		setNodeTitleFontSize(button: btn)
-		btn.setTitleColor(UIColor.black, for: .normal)
-		btn.addTarget(self, action: #selector(selectNode), for: .touchUpInside)
-		btn.tag = 1
+		let button: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(origin: point, size: CGSize(width: defaultNodeSize, height: defaultNodeSize)))
 		
-		renameNode(node: node)
-		setNodeTitleFontSize(button: btn)
+		button.layer.cornerRadius = 0.5 * button.bounds.size.width
+		button.layer.borderWidth = 3
+		button.layer.borderColor = UIColor.gray.cgColor
 		
-		self.view.addSubview(btn)
+		button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 14)
+		button.setTitleColor(UIColor.black, for: .normal)
+		
+		button.setTitle(node.name, for: .normal)
+		setNodeTitleFontSize(button: button)
+		
+		button.addTarget(self, action: #selector(selectNode), for: .touchUpInside)
+		button.tag = 1
+		
+		self.view.addSubview(button)
+
+		renameNodeButton(button: button)
 		
 		let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DetailViewController.handlePan(_:)))
 		gestureRecognizer.delegate = self
-		btn.addGestureRecognizer(gestureRecognizer)
-		//print("button \(node.name) added")
+		button.addGestureRecognizer(gestureRecognizer)
 		
-		return btn
+		return button
 	}
 	
 	//node dragging code
@@ -167,8 +167,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	                      y:view.center.y + translation.y)
 		}
 		recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
-		let btn = recognizer.view as! NodeSelectButton
-		btn.associatedNode?.location = btn.frame.origin
+		let button = recognizer.view as! NodeSelectButton
+		button.associatedNode?.location = button.frame.origin
 	}
 	
 }
