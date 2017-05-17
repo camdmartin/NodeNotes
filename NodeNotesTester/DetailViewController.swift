@@ -15,8 +15,6 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	var selectedNode: Node?
 	let defaultNodeSize = 50
 	
-	@IBOutlet var chartView: UIView!
-	
 	@IBOutlet var renameButton: UIBarButtonItem!
 	
 	@IBOutlet var toolbar: UIToolbar!
@@ -29,7 +27,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		let n = workspace!.createNode()
 		
 		//once moving nodes is in, change this to add at a static location
-		n.location = CGPoint(x: Int(chartView.frame.width / 2) - defaultNodeSize / 2, y: 100)
+		n.location = CGPoint(x: Int(self.toolbar.frame.width / 2) - defaultNodeSize / 2, y: 100)
 		
 		selectNodeButtons.append(addNodeSelectButton(node: n, point: n.location))
 		

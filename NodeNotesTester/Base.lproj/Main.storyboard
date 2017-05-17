@@ -31,27 +31,26 @@
             <objects>
                 <viewController title="Detail" id="JEX-9P-axG" customClass="DetailViewController" customModule="NodeNotesTester" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
-                        <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
+                        <viewControllerLayoutGuide type="top" id="G8J-qU-wR0"/>
+                        <viewControllerLayoutGuide type="bottom" id="rVr-Ns-fXV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
+                    <view key="view" contentMode="scaleToFill" id="g0e-Ic-BHp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fto-2F-YwJ">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jqk-On-ytj">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Rename" id="qmx-68-70t">
+                                    <barButtonItem title="Rename" id="1mf-FC-imB">
                                         <connections>
-                                            <action selector="renameChart:" destination="JEX-9P-axG" id="KKT-Z1-dCe"/>
+                                            <action selector="renameChart:" destination="JEX-9P-axG" id="j2P-R6-hXh"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <gestureRecognizers/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Chart" id="mOI-FS-AaM">
@@ -63,10 +62,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addNewNode" destination="w8H-hO-W18" id="zo7-oT-Bfq"/>
-                        <outlet property="chartView" destination="svH-Pt-448" id="5zO-EV-irk"/>
-                        <outlet property="detailView" destination="svH-Pt-448" id="YSM-TM-sGE"/>
-                        <outlet property="renameButton" destination="qmx-68-70t" id="VgS-J1-Smf"/>
-                        <outlet property="toolbar" destination="fto-2F-YwJ" id="6Zz-Tp-9x1"/>
+                        <outlet property="renameButton" destination="1mf-FC-imB" id="13t-Bn-MZ2"/>
+                        <outlet property="toolbar" destination="jqk-On-ytj" id="e1a-lT-DrG"/>
                         <outlet property="workspaceNavigationBar" destination="mOI-FS-AaM" id="KQV-8C-Adw"/>
                         <segue destination="Nbf-KB-VcU" kind="show" identifier="showNode" id="i2a-ss-wqO"/>
                     </connections>
@@ -161,11 +158,11 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
