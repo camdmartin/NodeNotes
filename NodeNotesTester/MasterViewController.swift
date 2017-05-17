@@ -42,12 +42,30 @@ class MasterViewController: UITableViewController {
 	}
 
 	func insertNewObject(_ sender: Any) {
-		let newWorkspace = Workspace(name: "Test")
-		newWorkspace.addTestData()
+		let newWorkspace = Workspace(name: "New Workspace")
+		renameChart(workspace: newWorkspace)
+		//newWorkspace.addTestData()
 		
 		objects.insert(newWorkspace, at: 0)
 		let indexPath = IndexPath(row: 0, section: 0)
 		self.tableView.insertRows(at: [indexPath], with: .automatic)
+	}
+	
+	func renameChart(workspace: Workspace) {
+		var alertController: UIAlertController?
+		alertController = UIAlertController(title: "Rename", message: "", preferredStyle: .alert)
+		alertController!.addTextField { (textField: UITextField) in
+			textField.placeholder = workspace.name
+		}
+		
+		let renameAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
+			workspace.name = (alertController?.textFields?[0].text)!
+			self.tableView.reloadData()
+		}
+		
+		alertController?.addAction(renameAction)
+		
+		self.present(alertController!, animated: true, completion: nil)
 	}
 
 	// MARK: - Segues

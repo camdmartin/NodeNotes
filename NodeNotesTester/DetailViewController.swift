@@ -13,6 +13,9 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	var workspace: Workspace?
 	var selectNodeButtons = [NodeSelectButton]()
 	var selectedNode: Node?
+	let defaultNodeSize = 50
+	
+	@IBOutlet var chartView: UIView!
 	
 	@IBOutlet var renameButton: UIBarButtonItem!
 	
@@ -26,7 +29,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		let n = workspace!.createNode()
 		
 		//once moving nodes is in, change this to add at a static location
-		n.location = getRandomPointInView()
+		n.location = CGPoint(x: Int(chartView.frame.width / 2) - defaultNodeSize / 2, y: 100)
 		
 		selectNodeButtons.append(addNodeSelectButton(node: n, point: n.location))
 		
@@ -44,6 +47,22 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		let renameAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
 			self.workspace?.name = (alertController?.textFields?[0].text)!
 			self.workspaceNavigationBar.title = self.workspace?.name
+		}
+		
+		alertController?.addAction(renameAction)
+		
+		self.present(alertController!, animated: true, completion: nil)
+	}
+	
+	func renameNode(node: Node) {
+		var alertController: UIAlertController?
+		alertController = UIAlertController(title: "Rename", message: "", preferredStyle: .alert)
+		alertController!.addTextField { (textField: UITextField) in
+			textField.placeholder = node.name
+		}
+		
+		let renameAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
+			node.name = (alertController?.textFields?[0].text)!
 		}
 		
 		alertController?.addAction(renameAction)
@@ -117,7 +136,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	func addNodeSelectButton(node: Node, point: CGPoint)->NodeSelectButton {
 		
-		let btn: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(origin: point, size: CGSize(width: 40, height: 40)))
+		let btn: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(origin: point, size: CGSize(width: defaultNodeSize, height: defaultNodeSize)))
 		btn.layer.cornerRadius = 0.5 * btn.bounds.size.width
 		btn.layer.borderWidth = 3
 		btn.layer.borderColor = UIColor.gray.cgColor
@@ -128,6 +147,10 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		btn.setTitleColor(UIColor.black, for: .normal)
 		btn.addTarget(self, action: #selector(selectNode), for: .touchUpInside)
 		btn.tag = 1
+		
+		renameNode(node: node)
+		setNodeTitleFontSize(button: btn)
+		
 		self.view.addSubview(btn)
 		
 		let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DetailViewController.handlePan(_:)))
