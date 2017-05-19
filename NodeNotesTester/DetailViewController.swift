@@ -62,6 +62,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		let renameAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
 			button.associatedNode?.name = (alertController?.textFields?[0].text)!
 			button.setTitle(button.associatedNode?.name, for: .normal)
+			button.setNodeTitleFontSize()
 		}
 		
 		alertController?.addAction(renameAction)
@@ -85,7 +86,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		for button in self.view.subviews {
 			if let b = button as? NodeSelectButton {
 				b.setTitle(b.associatedNode?.name, for: .normal)
-				setNodeTitleFontSize(button: b)
+				b.setNodeTitleFontSize()
 			}
 		}
 		
@@ -97,27 +98,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		super.didReceiveMemoryWarning()
 	}
 	
-	func setNodeTitleFontSize(button: NodeSelectButton) {
-		
-		let titleLength = Int((button.associatedNode?.name.characters.count)!)
-		var fontSize = 14
-		
-		switch titleLength {
-		case 0..<4:
-			fontSize = 20
-		case 4..<6:
-			fontSize = 14
-		case 6..<9:
-			fontSize = 12
-		default:
-			fontSize = 8
-		}
-		
-		button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: CGFloat(fontSize))
-		
-		button.setNeedsDisplay()
-
-	}
+	
 	
 	func selectNode(sender: NodeSelectButton) {
 		selectedNode = sender.associatedNode
@@ -128,6 +109,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		}
 		
 		vc.node = selectedNode!
+		vc.navigationController?.navigationBar.barTintColor = vc.node.color
 		self.navigationController?.pushViewController(vc, animated:true)
 	}
 	
@@ -137,13 +119,13 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		
 		button.layer.cornerRadius = 0.5 * button.bounds.size.width
 		button.layer.borderWidth = 3
-		button.layer.borderColor = UIColor.gray.cgColor
+		button.layer.borderColor = button.associatedNode!.color.cgColor
 		
 		button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 14)
 		button.setTitleColor(UIColor.black, for: .normal)
 		
 		button.setTitle(node.name, for: .normal)
-		setNodeTitleFontSize(button: button)
+		button.setNodeTitleFontSize()
 		
 		button.addTarget(self, action: #selector(selectNode), for: .touchUpInside)
 		button.tag = 1

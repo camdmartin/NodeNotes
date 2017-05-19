@@ -29,6 +29,19 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		self.present(alertController!, animated: true, completion: nil)
 	}
 	
+	@IBAction func showPopup(_ sender: UIBarButtonItem) {
+		let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editPopup") as! EditPopupViewController
+		popOverVC.node = self.node
+		
+		self.addChildViewController(popOverVC)
+		
+		popOverVC.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - self.toolbar.frame.height)
+		
+		self.view.addSubview(popOverVC.view)
+		
+		popOverVC.didMove(toParentViewController: self)
+	}
+	
 	@IBOutlet var nodeNavigationBar: UINavigationItem!
 	
 	@IBOutlet var nodeTextView: UITextView!
@@ -40,6 +53,10 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		
 		nodeNavigationBar.title = node.name
 		nodeTextView.text = node.text
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+
 	}
 	
 	override func viewWillDisappear(_ animated : Bool) {

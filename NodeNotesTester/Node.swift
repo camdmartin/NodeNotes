@@ -15,6 +15,7 @@ class Node: Hashable {
 	var text: String
 	var links: [Node]
 	var location: CGPoint
+	var color = UIColor.darkGray
 	
 	//this gives the node a workspace-unique identifier; the workspace has a counter and method that assigns this
 	var hashValue: Int

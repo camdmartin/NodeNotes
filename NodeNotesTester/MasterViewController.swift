@@ -24,6 +24,8 @@ class MasterViewController: UITableViewController {
 		    let controllers = split.viewControllers
 		    self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
 		}
+		
+		insertTestWorkspace()
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +50,16 @@ class MasterViewController: UITableViewController {
 		objects.insert(newWorkspace, at: 0)
 		let indexPath = IndexPath(row: 0, section: 0)
 		self.tableView.insertRows(at: [indexPath], with: .automatic)
+	}
+	
+	func insertTestWorkspace() {
+		let newWorkspace = Workspace(name: "Default")
+		newWorkspace.addTestData()
+		
+		objects.insert(newWorkspace, at: 0)
+		let indexPath = IndexPath(row: 0, section: 0)
+		self.tableView.insertRows(at: [indexPath], with: .automatic)
+
 	}
 	
 	func renameChart(workspace: Workspace) {

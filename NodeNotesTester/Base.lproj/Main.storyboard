@@ -104,6 +104,11 @@
                                             <action selector="createLink:" destination="Nbf-KB-VcU" id="tjC-zC-edd"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Color" id="CfM-Cl-kx8">
+                                        <connections>
+                                            <action selector="showPopup:" destination="Nbf-KB-VcU" id="tgz-oF-Caw"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -130,6 +135,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAS-1M-uud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1504.8" y="127.28635682158921"/>
+        </scene>
+        <!--Edit Popup View Controller-->
+        <scene sceneID="Did-eJ-shW">
+            <objects>
+                <viewController storyboardIdentifier="editPopup" id="mw4-aE-IQ1" customClass="EditPopupViewController" customModule="NodeNotesTester" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jkw-cg-aHH"/>
+                        <viewControllerLayoutGuide type="bottom" id="tmv-MI-KUh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RRg-9D-FoS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qx-kt-Qj1" customClass="EditPopupView" customModule="NodeNotesTester" customModuleProvider="target">
+                                <rect key="frame" x="56" y="100" width="263" height="400"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kbw-Se-gjr">
+                                        <rect key="frame" x="0.0" y="0.0" width="263" height="400"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIv-sC-rO1" customClass="SwiftHSVColorPicker" customModule="NodeNotesTester" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="263" height="400"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrW-Tk-mAH">
+                                                <rect key="frame" x="0.0" y="400" width="263" height="0.0"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="closeViewAndSave:" destination="mw4-aE-IQ1" eventType="touchUpInside" id="dxL-LG-hRb"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="Ip6-Qg-aQp"/>
+                                    <constraint firstAttribute="trailing" secondItem="kbw-Se-gjr" secondAttribute="trailing" id="K4u-VG-33B"/>
+                                    <constraint firstItem="kbw-Se-gjr" firstAttribute="leading" secondItem="6Qx-kt-Qj1" secondAttribute="leading" id="Sgg-v0-HYE"/>
+                                    <constraint firstAttribute="bottom" secondItem="kbw-Se-gjr" secondAttribute="bottom" id="W6G-I3-cEq"/>
+                                    <constraint firstItem="kbw-Se-gjr" firstAttribute="top" secondItem="6Qx-kt-Qj1" secondAttribute="top" id="hiQ-aP-gmh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Qx-kt-Qj1" firstAttribute="leading" secondItem="RRg-9D-FoS" secondAttribute="leadingMargin" constant="40" id="Pvq-2L-EY3"/>
+                            <constraint firstItem="6Qx-kt-Qj1" firstAttribute="top" secondItem="Jkw-cg-aHH" secondAttribute="bottom" constant="80" id="hFk-In-EtC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Qx-kt-Qj1" secondAttribute="trailing" constant="40" id="vTW-sW-wxJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="hsvColorPicker" destination="RIv-sC-rO1" id="AhP-oV-iaZ"/>
+                        <outlet property="saveButton" destination="QrW-Tk-mAH" id="IPX-pj-xqK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7x-rf-OzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2312.8000000000002" y="127.28635682158921"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -203,6 +266,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-45" y="129"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Mcv-sV-aYr">
+            <objects>
+                <viewController id="mLn-jN-Pw6" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uKK-hq-heb"/>
+                        <viewControllerLayoutGuide type="bottom" id="AvR-0y-8Er"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cMj-mh-IfT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fN2-fE-jrU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
