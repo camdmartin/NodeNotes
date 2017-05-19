@@ -13,7 +13,9 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	var workspace: Workspace?
 	var selectNodeButtons = [NodeSelectButton]()
 	var selectedNode: Node?
-	let defaultNodeSize = 50
+	
+	let xBoundary = 30
+	let yBoundary = 80
 	
 	@IBOutlet var renameButton: UIBarButtonItem!
 	
@@ -26,13 +28,11 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	@IBAction func addNode(_ sender: UIBarButtonItem) {
 		let n = workspace!.createNode()
 		
-		//once moving nodes is in, change this to add at a static location
-		n.location = CGPoint(x: Int(self.toolbar.frame.width / 2) - defaultNodeSize / 2, y: 100)
+		n.location = CGPoint(x: Int(self.toolbar.frame.width / 2) - n.size / 2, y: 100)
 		
 		selectNodeButtons.append(addNodeSelectButton(node: n, point: n.location))
 		
 		self.view.setNeedsDisplay()
-		//print("new button added")
 	}
 	
 	@IBAction func renameChart(_ sender: UIBarButtonItem) {
@@ -62,7 +62,6 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		let renameAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
 			button.node?.name = (alertController?.textFields?[0].text)!
 			button.setTitle(button.node?.name, for: .normal)
-			button.setNodeTitleFontSize()
 		}
 		
 		alertController?.addAction(renameAction)
@@ -70,6 +69,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		self.present(alertController!, animated: true, completion: nil)
 	}
 	
+	//this is for creating nodes in random positions
 	func getRandomPointInView() -> CGPoint {
 		let x = arc4random_uniform(UInt32(self.view.frame.width - 80)) + 40
 		let y = arc4random_uniform(UInt32(self.view.frame.height - 80)) + 40
@@ -85,18 +85,23 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	override func viewDidAppear(_ animated: Bool) {
 		for button in self.view.subviews {
 			if let b = button as? NodeSelectButton {
-				b.setTitle(b.node?.name, for: .normal)
-				b.setNodeTitleFontSize()
-				
-				b.layer.borderColor = b.node?.color.cgColor
-				
-				b.frame = CGRect(origin: b.frame.origin, size: CGSize(width: b.node!.size, height: b.node!.size))
-				button.layer.cornerRadius = 0.5 * button.bounds.size.width
+				updateButton(button: b)
 			}
 		}
 		
 		self.view.setNeedsDisplay()
 		
+	}
+	
+	func updateButton(button: NodeSelectButton) {
+		button.setTitle(button.node?.name, for: .normal)
+		button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: CGFloat((button.node?.fontSize)!))
+		
+		button.layer.borderColor = button.node?.color.cgColor
+		button.layer.borderWidth = 3
+		
+		button.frame = CGRect(origin: button.frame.origin, size: CGSize(width: button.node!.size, height: button.node!.size))
+		button.layer.cornerRadius = 0.5 * button.bounds.size.width
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -124,11 +129,10 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		button.layer.borderWidth = 3
 		button.layer.borderColor = button.node!.color.cgColor
 		
-		button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 14)
+		button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: CGFloat(node.fontSize))
 		button.setTitleColor(UIColor.black, for: .normal)
 		
 		button.setTitle(node.name, for: .normal)
-		button.setNodeTitleFontSize()
 		
 		button.addTarget(self, action: #selector(selectNode), for: .touchUpInside)
 		button.tag = 1
@@ -147,9 +151,18 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	//node dragging code
 	@IBAction func handlePan(_ recognizer:UIPanGestureRecognizer) {
 		let translation = recognizer.translation(in: self.view)
+
 		if let view = recognizer.view {
-			view.center = CGPoint(x:view.center.x + translation.x,
+			
+			let viewCenter = CGPoint(x:view.center.x + translation.x,
 	                      y:view.center.y + translation.y)
+			let superview = view.superview!
+			
+			if ((CGFloat(xBoundary)) < viewCenter.x && viewCenter.x < (superview.frame.width - CGFloat(xBoundary))) {
+				if (CGFloat(yBoundary) < viewCenter.y && viewCenter.y < (superview.frame.height - CGFloat(yBoundary))) {
+					view.center = viewCenter
+				}
+			}
 		}
 		recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
 		let button = recognizer.view as! NodeSelectButton

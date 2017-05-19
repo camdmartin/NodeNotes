@@ -53,7 +53,7 @@ class MasterViewController: UITableViewController {
 	}
 	
 	func insertTestWorkspace() {
-		let newWorkspace = Workspace(name: "Default")
+		let newWorkspace = Workspace(name: "Classes")
 		newWorkspace.addTestData()
 		
 		objects.insert(newWorkspace, at: 0)

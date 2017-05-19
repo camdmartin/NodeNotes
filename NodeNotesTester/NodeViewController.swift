@@ -12,23 +12,6 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	
 	@IBOutlet var toolbar: UIToolbar!
 	
-	@IBAction func renameNode(_ sender: UIBarButtonItem) {
-		var alertController: UIAlertController?
-		alertController = UIAlertController(title: "Rename", message: "", preferredStyle: .alert)
-		alertController!.addTextField { (textField: UITextField) in
-			textField.placeholder = self.node.name
-		}
-		
-		let renameAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
-			self.node.name = (alertController?.textFields?[0].text)!
-			self.nodeNavigationBar.title = self.node.name
-		}
-		
-		alertController?.addAction(renameAction)
-		
-		self.present(alertController!, animated: true, completion: nil)
-	}
-	
 	@IBAction func showPopup(_ sender: UIBarButtonItem) {
 		let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editPopup") as! EditPopupViewController
 		
@@ -41,7 +24,12 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		popOverVC.editPopupView.layer.cornerRadius = 12
 		popOverVC.editPopupView.layer.borderColor = UIColor.black.cgColor
 		popOverVC.editPopupView.layer.borderWidth = 3
+		
 		popOverVC.renameField.text = node.name
+		popOverVC.fontSizeSlider.value = Float(node.fontSize)
+		popOverVC.sizeSlider.value = Float(node.size)
+		popOverVC.fontSizeDisplay.text = "\(self.node.fontSize)"
+		popOverVC.nodeSizeDisplay.text = "\(self.node.size)"
 
 		self.view.addSubview(popOverVC.view)
 		
@@ -62,6 +50,7 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		nodeNavigationBar.title = node.name
+		toolbar.barTintColor = node.color
 	}
 	
 	override func viewWillDisappear(_ animated : Bool) {

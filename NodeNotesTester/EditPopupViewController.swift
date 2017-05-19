@@ -12,13 +12,19 @@ import UIKit
 class EditPopupViewController: UIViewController {
 	var node: Node? = nil
 	
-	@IBOutlet var editPopupView: EditPopupView!
+	@IBOutlet var editPopupView: UIView!
 	
 	@IBOutlet var renameField: UITextField!
 	
 	@IBOutlet var hsvColorPicker: SwiftHSVColorPicker!
 	
+	@IBOutlet var fontSizeSlider: UISlider!
+	
+	@IBOutlet var fontSizeDisplay: UILabel!
+	
 	@IBOutlet var sizeSlider: UISlider!
+	
+	@IBOutlet var nodeSizeDisplay: UILabel!
 	
 	@IBOutlet var saveButton: UIButton!
 	
@@ -28,38 +34,29 @@ class EditPopupViewController: UIViewController {
 		hsvColorPicker.setViewColor(node!.color)
 	}
 	
+	@IBAction func sliderValueChanged(_ sender: UISlider) {
+		switch sender.restorationIdentifier! {
+		case "fss": fontSizeDisplay.text = "\(Int(fontSizeSlider.value))"
+		case "nss": nodeSizeDisplay.text = "\(Int(sizeSlider.value))"
+		default: ()
+		}
+		
+	}
+	
 	@IBAction func closeViewAndSave(_ sender: UIButton) {
 		node!.color = hsvColorPicker.color
 		node!.size = Int(sizeSlider.value)
-		if renameField.text != node!.name {
-			node?.name = renameField.text!
-			let vc = self.parent as! NodeViewController
-			vc.nodeNavigationBar.title = node?.name
-		}
+		node!.fontSize = Int(fontSizeSlider.value)
+		node!.name = renameField.text!
+		
+		let vc = self.parent as! NodeViewController
+		vc.nodeNavigationBar.title = node?.name
+		vc.toolbar.barTintColor = node?.color
 		
 		self.view.removeFromSuperview()
 	}
 	
-	func showAnimate()
-	{
-		self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-		self.view.alpha = 0.0;
-		UIView.animate(withDuration: 0.25, animations: {
-			self.view.alpha = 1.0
-			self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-		});
-	}
-	
-	func removeAnimate()
-	{
-		UIView.animate(withDuration: 0.25, animations: {
-			self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-			self.view.alpha = 0.0;
-		}, completion:{(finished : Bool)  in
-			if (finished)
-			{
-				self.view.removeFromSuperview()
-			}
-		});
+	@IBAction func closeViewWithoutSaving(_ sender: UIButton) {
+		self.view.removeFromSuperview()
 	}
 }

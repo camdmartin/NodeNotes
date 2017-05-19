@@ -150,43 +150,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qx-kt-Qj1" customClass="EditPopupView" customModule="NodeNotesTester" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qx-kt-Qj1">
                                 <rect key="frame" x="66" y="100" width="243" height="487"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="kbw-Se-gjr">
                                         <rect key="frame" x="12" y="12" width="219" height="463"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rename" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7C-Be-8nh">
-                                                <rect key="frame" x="0.0" y="0.0" width="219" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="219" height="32"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIv-sC-rO1" customClass="SwiftHSVColorPicker" customModule="NodeNotesTester" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="42" width="219" height="337"/>
+                                                <rect key="frame" x="0.0" y="44" width="219" height="293"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="noJ-QL-754">
-                                                <rect key="frame" x="0.0" y="391" width="219" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="YLS-Vp-Rxq">
+                                                <rect key="frame" x="0.0" y="349" width="219" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4c-JV-ilg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="29" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0L-Yj-6XD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="30" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="m4M-1C-AdT">
-                                                        <rect key="frame" x="39" y="0.0" width="182" height="31"/>
+                                                    <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="fss" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="6" maxValue="48" translatesAutoresizingMaskIntoConstraints="NO" id="GHt-4X-v3L">
+                                                        <rect key="frame" x="10" y="0.0" width="199" height="31"/>
+                                                        <connections>
+                                                            <action selector="editFontSize:" destination="mw4-aE-IQ1" eventType="editingChanged" id="dKS-m5-4Ov"/>
+                                                            <action selector="sliderValueChanged:" destination="mw4-aE-IQ1" eventType="valueChanged" id="wjj-D7-Sgk"/>
+                                                        </connections>
                                                     </slider>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJj-FX-7Kz">
+                                                        <rect key="frame" x="219" y="0.0" width="0.0" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrW-Tk-mAH">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="noJ-QL-754">
+                                                <rect key="frame" x="0.0" y="391" width="219" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Node Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4c-JV-ilg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" restorationIdentifier="nss" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="30" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="m4M-1C-AdT">
+                                                        <rect key="frame" x="10" y="0.0" width="199" height="31"/>
+                                                        <connections>
+                                                            <action selector="editNodeSize:" destination="mw4-aE-IQ1" eventType="editingChanged" id="sWJ-8n-eWI"/>
+                                                            <action selector="sliderValueChanged:" destination="mw4-aE-IQ1" eventType="valueChanged" id="XcJ-Bz-WCR"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EE3-8p-Vri">
+                                                        <rect key="frame" x="219" y="0.0" width="0.0" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0ml-Ff-5tt">
                                                 <rect key="frame" x="0.0" y="433" width="219" height="30"/>
-                                                <state key="normal" title="Save"/>
-                                                <connections>
-                                                    <action selector="closeViewAndSave:" destination="mw4-aE-IQ1" eventType="touchUpInside" id="dxL-LG-hRb"/>
-                                                </connections>
-                                            </button>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrW-Tk-mAH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="30"/>
+                                                        <state key="normal" title="Save"/>
+                                                        <connections>
+                                                            <action selector="closeViewAndSave:" destination="mw4-aE-IQ1" eventType="touchUpInside" id="dxL-LG-hRb"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3w-ca-qvu">
+                                                        <rect key="frame" x="109.5" y="0.0" width="109.5" height="30"/>
+                                                        <state key="normal" title="Don't Save"/>
+                                                        <connections>
+                                                            <action selector="closeViewWithoutSaving:" destination="mw4-aE-IQ1" eventType="touchUpInside" id="eKW-07-jOg"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -209,7 +255,10 @@
                     </view>
                     <connections>
                         <outlet property="editPopupView" destination="6Qx-kt-Qj1" id="t3k-Rp-oIW"/>
+                        <outlet property="fontSizeDisplay" destination="DJj-FX-7Kz" id="ksR-Cc-2yu"/>
+                        <outlet property="fontSizeSlider" destination="GHt-4X-v3L" id="V8K-5Y-ky0"/>
                         <outlet property="hsvColorPicker" destination="RIv-sC-rO1" id="AhP-oV-iaZ"/>
+                        <outlet property="nodeSizeDisplay" destination="EE3-8p-Vri" id="6Ez-bx-j2B"/>
                         <outlet property="renameField" destination="J7C-Be-8nh" id="Ebw-xC-CoU"/>
                         <outlet property="saveButton" destination="QrW-Tk-mAH" id="IPX-pj-xqK"/>
                         <outlet property="sizeSlider" destination="m4M-1C-AdT" id="25e-LE-fxt"/>

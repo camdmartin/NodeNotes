@@ -23,7 +23,6 @@
 		A4A5A6B11ECF405B003E4810 /* SelectedColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A5A6AC1ECF405B003E4810 /* SelectedColorView.swift */; };
 		A4A5A6B21ECF405B003E4810 /* SwiftHSVColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A5A6AD1ECF405B003E4810 /* SwiftHSVColorPicker.swift */; };
 		A4A5A6BC1ECF46C8003E4810 /* EditPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A5A6BB1ECF46C8003E4810 /* EditPopupViewController.swift */; };
-		A4A5A6BE1ECF49AE003E4810 /* EditPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A5A6BD1ECF49AE003E4810 /* EditPopupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +44,6 @@
 		A4A5A6AC1ECF405B003E4810 /* SelectedColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedColorView.swift; sourceTree = "<group>"; };
 		A4A5A6AD1ECF405B003E4810 /* SwiftHSVColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHSVColorPicker.swift; sourceTree = "<group>"; };
 		A4A5A6BB1ECF46C8003E4810 /* EditPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPopupViewController.swift; sourceTree = "<group>"; };
-		A4A5A6BD1ECF49AE003E4810 /* EditPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPopupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,11 +85,10 @@
 				A413B6A21E9E85FF00793989 /* Workspace.swift */,
 				A413B6A41E9E863C00793989 /* Node.swift */,
 				A413B6A01E9BE57300793989 /* NodeViewController.swift */,
+				A4A5A6BB1ECF46C8003E4810 /* EditPopupViewController.swift */,
 				A413B6951E9BDDB500793989 /* Assets.xcassets */,
 				A413B6971E9BDDB500793989 /* LaunchScreen.storyboard */,
 				A413B69A1E9BDDB500793989 /* Info.plist */,
-				A4A5A6BB1ECF46C8003E4810 /* EditPopupViewController.swift */,
-				A4A5A6BD1ECF49AE003E4810 /* EditPopupView.swift */,
 			);
 			path = NodeNotesTester;
 			sourceTree = "<group>";
@@ -191,7 +188,6 @@
 				A4A5A6B21ECF405B003E4810 /* SwiftHSVColorPicker.swift in Sources */,
 				A413B68F1E9BDDB500793989 /* MasterViewController.swift in Sources */,
 				A413B68D1E9BDDB500793989 /* AppDelegate.swift in Sources */,
-				A4A5A6BE1ECF49AE003E4810 /* EditPopupView.swift in Sources */,
 				A4A5A6B01ECF405B003E4810 /* ColorWheel.swift in Sources */,
 				A4A5A6B11ECF405B003E4810 /* SelectedColorView.swift in Sources */,
 			);
