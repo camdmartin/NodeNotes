@@ -13,7 +13,7 @@ class Node: Hashable {
 	
 	var name: String
 	var text: String
-	var links: [Node]
+	var links: Set<Node>
 	var location: CGPoint
 	var color = UIColor.lightGray
 	var size = 50
@@ -22,7 +22,7 @@ class Node: Hashable {
 	//this gives the node a workspace-unique identifier; the workspace has a counter and method that assigns this
 	var hashValue: Int
 	
-	init (name: String, text: String, links: [Node], value: Int, location: CGPoint) {
+	init (name: String, text: String, links: Set<Node>, value: Int, location: CGPoint) {
 		self.name = name
 		self.text = text
 		self.links = links
@@ -37,6 +37,10 @@ class Node: Hashable {
 		self.links = []
 		self.hashValue = value
 		self.location = CGPoint.zero
+	}
+	
+	func getNodeCenter() -> CGPoint {
+		return CGPoint(x: Int(location.x) + size / 2, y: Int(location.y) + size / 2)
 	}
 		
 	static func == (lhs: Node, rhs: Node) -> Bool {

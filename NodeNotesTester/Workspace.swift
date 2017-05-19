@@ -50,6 +50,11 @@ class Workspace {
 		return newNode
 	}
 	
+	func addLink(from: Node, to: Node) {
+		from.links.insert(to)
+		to.links.insert(from)
+	}
+	
 	func addTestData() {
 		let physics = createNodeWithName(name: "Physics E&M", x: 50, y: 325)
 		physics.color = UIColor.blue
@@ -79,5 +84,9 @@ class Workspace {
 		let band = createNodeWithName(name: "Symphonic Band", x: 125, y: 550)
 		band.color = UIColor.yellow
 		band.size = 100
+		
+		addLink(from: physics, to: calculus)
+		addLink(from: programming, to: calculus)
+		addLink(from: english, to: history)
 	}
 }

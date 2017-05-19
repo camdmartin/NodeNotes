@@ -16,6 +16,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	let xBoundary = 30
 	let yBoundary = 80
+
+	@IBOutlet var chartView: ChartView!
 	
 	@IBOutlet var renameButton: UIBarButtonItem!
 	
@@ -79,7 +81,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		drawLinks()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -88,9 +90,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 				updateButton(button: b)
 			}
 		}
-		
+		drawLinks()
 		self.view.setNeedsDisplay()
-		
 	}
 	
 	func updateButton(button: NodeSelectButton) {
@@ -121,6 +122,12 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		self.navigationController?.pushViewController(vc, animated:true)
 	}
 	
+	func drawLinks() {
+		chartView.nodes = workspace?.nodes
+		chartView.draw(view.frame)
+	}
+	
+	
 	func addNodeSelectButton(node: Node, point: CGPoint)->NodeSelectButton {
 		
 		let button: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(origin: point, size: CGSize(width: node.size, height: node.size)))
@@ -128,6 +135,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		button.layer.cornerRadius = 0.5 * button.bounds.size.width
 		button.layer.borderWidth = 3
 		button.layer.borderColor = button.node!.color.cgColor
+		button.layer.backgroundColor = UIColor.white.cgColor
 		
 		button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: CGFloat(node.fontSize))
 		button.setTitleColor(UIColor.black, for: .normal)
@@ -144,6 +152,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DetailViewController.handlePan(_:)))
 		gestureRecognizer.delegate = self
 		button.addGestureRecognizer(gestureRecognizer)
+		
+		drawLinks()
 		
 		return button
 	}
@@ -167,6 +177,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
 		let button = recognizer.view as! NodeSelectButton
 		button.node?.location = button.frame.origin
+		
+		chartView.setNeedsDisplay()
 	}
 	
 }

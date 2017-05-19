@@ -34,7 +34,7 @@
                         <viewControllerLayoutGuide type="top" id="G8J-qU-wR0"/>
                         <viewControllerLayoutGuide type="bottom" id="rVr-Ns-fXV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="g0e-Ic-BHp">
+                    <view key="view" contentMode="scaleToFill" id="g0e-Ic-BHp" customClass="ChartView" customModule="NodeNotesTester" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -62,6 +62,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addNewNode" destination="w8H-hO-W18" id="zo7-oT-Bfq"/>
+                        <outlet property="chartView" destination="g0e-Ic-BHp" id="Eb9-ru-vNe"/>
                         <outlet property="renameButton" destination="1mf-FC-imB" id="13t-Bn-MZ2"/>
                         <outlet property="toolbar" destination="jqk-On-ytj" id="e1a-lT-DrG"/>
                         <outlet property="workspaceNavigationBar" destination="mOI-FS-AaM" id="KQV-8C-Adw"/>

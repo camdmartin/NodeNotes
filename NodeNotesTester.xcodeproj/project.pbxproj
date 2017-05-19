@@ -17,6 +17,7 @@
 		A413B6A31E9E85FF00793989 /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6A21E9E85FF00793989 /* Workspace.swift */; };
 		A413B6A51E9E863C00793989 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6A41E9E863C00793989 /* Node.swift */; };
 		A413B6A71E9EA35F00793989 /* NodeSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6A61E9EA35E00793989 /* NodeSelectButton.swift */; };
+		A41A28311ECF7912001DD315 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A28301ECF7912001DD315 /* ChartView.swift */; };
 		A4A5A6AE1ECF405B003E4810 /* BrightnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A5A6A91ECF405B003E4810 /* BrightnessView.swift */; };
 		A4A5A6AF1ECF405B003E4810 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A5A6AA1ECF405B003E4810 /* ColorUtils.swift */; };
 		A4A5A6B01ECF405B003E4810 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A5A6AB1ECF405B003E4810 /* ColorWheel.swift */; };
@@ -38,6 +39,7 @@
 		A413B6A21E9E85FF00793989 /* Workspace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workspace.swift; sourceTree = "<group>"; };
 		A413B6A41E9E863C00793989 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		A413B6A61E9EA35E00793989 /* NodeSelectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeSelectButton.swift; sourceTree = "<group>"; };
+		A41A28301ECF7912001DD315 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		A4A5A6A91ECF405B003E4810 /* BrightnessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrightnessView.swift; sourceTree = "<group>"; };
 		A4A5A6AA1ECF405B003E4810 /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
 		A4A5A6AB1ECF405B003E4810 /* ColorWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				A413B68C1E9BDDB500793989 /* AppDelegate.swift */,
 				A413B68E1E9BDDB500793989 /* MasterViewController.swift */,
 				A413B6901E9BDDB500793989 /* DetailViewController.swift */,
+				A41A28301ECF7912001DD315 /* ChartView.swift */,
 				A413B6A61E9EA35E00793989 /* NodeSelectButton.swift */,
 				A413B6921E9BDDB500793989 /* Main.storyboard */,
 				A413B6A21E9E85FF00793989 /* Workspace.swift */,
@@ -180,6 +183,7 @@
 				A4A5A6BC1ECF46C8003E4810 /* EditPopupViewController.swift in Sources */,
 				A4A5A6AF1ECF405B003E4810 /* ColorUtils.swift in Sources */,
 				A413B6A11E9BE57300793989 /* NodeViewController.swift in Sources */,
+				A41A28311ECF7912001DD315 /* ChartView.swift in Sources */,
 				A413B6911E9BDDB500793989 /* DetailViewController.swift in Sources */,
 				A413B6A31E9E85FF00793989 /* Workspace.swift in Sources */,
 				A4A5A6AE1ECF405B003E4810 /* BrightnessView.swift in Sources */,
