@@ -56,12 +56,12 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		var alertController: UIAlertController?
 		alertController = UIAlertController(title: "Rename", message: "", preferredStyle: .alert)
 		alertController!.addTextField { (textField: UITextField) in
-			textField.placeholder = button.associatedNode?.name
+			textField.placeholder = button.node?.name
 		}
 		
 		let renameAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
-			button.associatedNode?.name = (alertController?.textFields?[0].text)!
-			button.setTitle(button.associatedNode?.name, for: .normal)
+			button.node?.name = (alertController?.textFields?[0].text)!
+			button.setTitle(button.node?.name, for: .normal)
 			button.setNodeTitleFontSize()
 		}
 		
@@ -85,9 +85,13 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	override func viewDidAppear(_ animated: Bool) {
 		for button in self.view.subviews {
 			if let b = button as? NodeSelectButton {
-				b.setTitle(b.associatedNode?.name, for: .normal)
-				b.layer.borderColor = b.associatedNode?.color.cgColor
+				b.setTitle(b.node?.name, for: .normal)
 				b.setNodeTitleFontSize()
+				
+				b.layer.borderColor = b.node?.color.cgColor
+				
+				b.frame = CGRect(origin: b.frame.origin, size: CGSize(width: b.node!.size, height: b.node!.size))
+				button.layer.cornerRadius = 0.5 * button.bounds.size.width
 			}
 		}
 		
@@ -100,7 +104,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	}
 	
 	func selectNode(sender: NodeSelectButton) {
-		selectedNode = sender.associatedNode
+		selectedNode = sender.node
 		
 		guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "NodeViewController") as? NodeViewController else {
 			print("Could not instantiate view controller with identifier of type NodeViewController")
@@ -114,11 +118,11 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	func addNodeSelectButton(node: Node, point: CGPoint)->NodeSelectButton {
 		
-		let button: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(origin: point, size: CGSize(width: defaultNodeSize, height: defaultNodeSize)))
+		let button: NodeSelectButton = NodeSelectButton(node: node, frame: CGRect(origin: point, size: CGSize(width: node.size, height: node.size)))
 		
 		button.layer.cornerRadius = 0.5 * button.bounds.size.width
 		button.layer.borderWidth = 3
-		button.layer.borderColor = button.associatedNode!.color.cgColor
+		button.layer.borderColor = button.node!.color.cgColor
 		
 		button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 14)
 		button.setTitleColor(UIColor.black, for: .normal)
@@ -149,7 +153,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		}
 		recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
 		let button = recognizer.view as! NodeSelectButton
-		button.associatedNode?.location = button.frame.origin
+		button.node?.location = button.frame.origin
 	}
 	
 }

@@ -37,6 +37,8 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		self.addChildViewController(popOverVC)
 		
 		popOverVC.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - self.toolbar.frame.height)
+		popOverVC.view.layer.cornerRadius = 20
+		
 		popOverVC.renameField.text = node.name
 
 		self.view.addSubview(popOverVC.view)

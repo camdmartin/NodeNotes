@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Rename" id="1mf-FC-imB">
+                                    <barButtonItem title="Rename Workspace" id="1mf-FC-imB">
                                         <connections>
                                             <action selector="renameChart:" destination="JEX-9P-axG" id="j2P-R6-hXh"/>
                                         </connections>
@@ -144,23 +144,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qx-kt-Qj1" customClass="EditPopupView" customModule="NodeNotesTester" customModuleProvider="target">
-                                <rect key="frame" x="36" y="100" width="283" height="400"/>
+                                <rect key="frame" x="66" y="100" width="243" height="500"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kbw-Se-gjr">
-                                        <rect key="frame" x="0.0" y="0.0" width="283" height="400"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="kbw-Se-gjr">
+                                        <rect key="frame" x="0.0" y="0.0" width="243" height="500"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rename" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7C-Be-8nh">
-                                                <rect key="frame" x="0.0" y="0.0" width="283" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="243" height="0.0"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="RIv-sC-rO1" customClass="SwiftHSVColorPicker" customModule="NodeNotesTester" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="30" width="283" height="340"/>
+                                                <rect key="frame" x="0.0" y="12" width="243" height="416"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="noJ-QL-754">
+                                                <rect key="frame" x="0.0" y="440" width="243" height="20.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4c-JV-ilg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="30" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="m4M-1C-AdT">
+                                                        <rect key="frame" x="10" y="0.0" width="235" height="21.5"/>
+                                                    </slider>
+                                                </subviews>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrW-Tk-mAH">
-                                                <rect key="frame" x="0.0" y="370" width="283" height="30"/>
+                                                <rect key="frame" x="0.0" y="472.5" width="243" height="27.5"/>
                                                 <state key="normal" title="Save"/>
                                                 <connections>
                                                     <action selector="closeViewAndSave:" destination="mw4-aE-IQ1" eventType="touchUpInside" id="dxL-LG-hRb"/>
@@ -169,28 +183,28 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="Ip6-Qg-aQp"/>
                                     <constraint firstItem="kbw-Se-gjr" firstAttribute="leading" secondItem="6Qx-kt-Qj1" secondAttribute="leading" id="JZQ-Av-3UU"/>
                                     <constraint firstAttribute="trailing" secondItem="kbw-Se-gjr" secondAttribute="trailing" id="K4u-VG-33B"/>
                                     <constraint firstAttribute="bottom" secondItem="kbw-Se-gjr" secondAttribute="bottom" id="W6G-I3-cEq"/>
                                     <constraint firstAttribute="trailing" secondItem="kbw-Se-gjr" secondAttribute="trailing" id="cP8-k4-D97"/>
                                     <constraint firstItem="kbw-Se-gjr" firstAttribute="top" secondItem="6Qx-kt-Qj1" secondAttribute="top" id="hiQ-aP-gmh"/>
+                                    <constraint firstAttribute="height" constant="500" id="qyQ-Y7-aDJ"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6Qx-kt-Qj1" firstAttribute="leading" secondItem="RRg-9D-FoS" secondAttribute="leadingMargin" constant="20" id="9gO-8B-QOq"/>
+                            <constraint firstItem="6Qx-kt-Qj1" firstAttribute="leading" secondItem="RRg-9D-FoS" secondAttribute="leadingMargin" constant="50" id="b9e-cN-AL2"/>
                             <constraint firstItem="6Qx-kt-Qj1" firstAttribute="top" secondItem="Jkw-cg-aHH" secondAttribute="bottom" constant="80" id="hFk-In-EtC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6Qx-kt-Qj1" secondAttribute="trailing" constant="40" id="vTW-sW-wxJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Qx-kt-Qj1" secondAttribute="trailing" constant="50" id="uSV-Lr-2Xk"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="hsvColorPicker" destination="RIv-sC-rO1" id="AhP-oV-iaZ"/>
                         <outlet property="renameField" destination="J7C-Be-8nh" id="Ebw-xC-CoU"/>
                         <outlet property="saveButton" destination="QrW-Tk-mAH" id="IPX-pj-xqK"/>
+                        <outlet property="sizeSlider" destination="m4M-1C-AdT" id="25e-LE-fxt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7x-rf-OzG" userLabel="First Responder" sceneMemberID="firstResponder"/>

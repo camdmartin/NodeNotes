@@ -10,10 +10,10 @@ import UIKit
 
 class NodeSelectButton: UIButton {
 	
-	var associatedNode: Node?
+	var node: Node?
 	
 	required init(node: Node, frame: CGRect) {
-		self.associatedNode = node
+		self.node = node
 		
 		super.init(frame: frame)
 		self.isUserInteractionEnabled = true
@@ -25,7 +25,7 @@ class NodeSelectButton: UIButton {
 	
 	func setNodeTitleFontSize() {
 		
-		let titleLength = Int((associatedNode?.name.characters.count)!)
+		let titleLength = Int((node?.name.characters.count)!)
 		var fontSize = 8
 		
 		switch titleLength {
