@@ -37,8 +37,10 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		self.addChildViewController(popOverVC)
 		
 		popOverVC.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - self.toolbar.frame.height)
-		popOverVC.view.layer.cornerRadius = 20
 		
+		popOverVC.editPopupView.layer.cornerRadius = 12
+		popOverVC.editPopupView.layer.borderColor = UIColor.black.cgColor
+		popOverVC.editPopupView.layer.borderWidth = 3
 		popOverVC.renameField.text = node.name
 
 		self.view.addSubview(popOverVC.view)
@@ -55,7 +57,6 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		nodeNavigationBar.title = node.name
 		nodeTextView.text = node.text
 	}
 	

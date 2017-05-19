@@ -12,6 +12,8 @@ import UIKit
 class EditPopupViewController: UIViewController {
 	var node: Node? = nil
 	
+	@IBOutlet var editPopupView: EditPopupView!
+	
 	@IBOutlet var renameField: UITextField!
 	
 	@IBOutlet var hsvColorPicker: SwiftHSVColorPicker!
@@ -31,6 +33,8 @@ class EditPopupViewController: UIViewController {
 		node!.size = Int(sizeSlider.value)
 		if renameField.text != node!.name {
 			node?.name = renameField.text!
+			let vc = self.parent as! NodeViewController
+			vc.nodeNavigationBar.title = node?.name
 		}
 		
 		self.view.removeFromSuperview()
