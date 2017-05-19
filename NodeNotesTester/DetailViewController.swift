@@ -86,6 +86,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		for button in self.view.subviews {
 			if let b = button as? NodeSelectButton {
 				b.setTitle(b.associatedNode?.name, for: .normal)
+				b.layer.borderColor = b.associatedNode?.color.cgColor
 				b.setNodeTitleFontSize()
 			}
 		}
@@ -97,8 +98,6 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
-	
-	
 	
 	func selectNode(sender: NodeSelectButton) {
 		selectedNode = sender.associatedNode

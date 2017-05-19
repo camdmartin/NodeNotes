@@ -90,21 +90,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet"/>
                             </textView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jd3-DR-eYk">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jd3-DR-eYk">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Rename" id="dm0-kf-f2L">
-                                        <connections>
-                                            <action selector="renameNode:" destination="Nbf-KB-VcU" id="BtU-rs-Kg5"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem title="Link" id="N51-Eo-Wd1">
                                         <connections>
                                             <action selector="createLink:" destination="Nbf-KB-VcU" id="tjC-zC-edd"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Color" id="CfM-Cl-kx8">
+                                    <barButtonItem title="Edit" id="CfM-Cl-kx8">
                                         <connections>
                                             <action selector="showPopup:" destination="Nbf-KB-VcU" id="tgz-oF-Caw"/>
                                         </connections>
@@ -149,17 +144,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qx-kt-Qj1" customClass="EditPopupView" customModule="NodeNotesTester" customModuleProvider="target">
-                                <rect key="frame" x="56" y="100" width="263" height="400"/>
+                                <rect key="frame" x="36" y="100" width="283" height="400"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kbw-Se-gjr">
-                                        <rect key="frame" x="0.0" y="0.0" width="263" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="283" height="400"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIv-sC-rO1" customClass="SwiftHSVColorPicker" customModule="NodeNotesTester" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="263" height="400"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rename" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7C-Be-8nh">
+                                                <rect key="frame" x="0.0" y="0.0" width="283" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="RIv-sC-rO1" customClass="SwiftHSVColorPicker" customModule="NodeNotesTester" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="30" width="283" height="340"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrW-Tk-mAH">
-                                                <rect key="frame" x="0.0" y="400" width="263" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="370" width="283" height="30"/>
                                                 <state key="normal" title="Save"/>
                                                 <connections>
                                                     <action selector="closeViewAndSave:" destination="mw4-aE-IQ1" eventType="touchUpInside" id="dxL-LG-hRb"/>
@@ -171,22 +172,24 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="Ip6-Qg-aQp"/>
+                                    <constraint firstItem="kbw-Se-gjr" firstAttribute="leading" secondItem="6Qx-kt-Qj1" secondAttribute="leading" id="JZQ-Av-3UU"/>
                                     <constraint firstAttribute="trailing" secondItem="kbw-Se-gjr" secondAttribute="trailing" id="K4u-VG-33B"/>
-                                    <constraint firstItem="kbw-Se-gjr" firstAttribute="leading" secondItem="6Qx-kt-Qj1" secondAttribute="leading" id="Sgg-v0-HYE"/>
                                     <constraint firstAttribute="bottom" secondItem="kbw-Se-gjr" secondAttribute="bottom" id="W6G-I3-cEq"/>
+                                    <constraint firstAttribute="trailing" secondItem="kbw-Se-gjr" secondAttribute="trailing" id="cP8-k4-D97"/>
                                     <constraint firstItem="kbw-Se-gjr" firstAttribute="top" secondItem="6Qx-kt-Qj1" secondAttribute="top" id="hiQ-aP-gmh"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6Qx-kt-Qj1" firstAttribute="leading" secondItem="RRg-9D-FoS" secondAttribute="leadingMargin" constant="40" id="Pvq-2L-EY3"/>
+                            <constraint firstItem="6Qx-kt-Qj1" firstAttribute="leading" secondItem="RRg-9D-FoS" secondAttribute="leadingMargin" constant="20" id="9gO-8B-QOq"/>
                             <constraint firstItem="6Qx-kt-Qj1" firstAttribute="top" secondItem="Jkw-cg-aHH" secondAttribute="bottom" constant="80" id="hFk-In-EtC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6Qx-kt-Qj1" secondAttribute="trailing" constant="40" id="vTW-sW-wxJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="hsvColorPicker" destination="RIv-sC-rO1" id="AhP-oV-iaZ"/>
+                        <outlet property="renameField" destination="J7C-Be-8nh" id="Ebw-xC-CoU"/>
                         <outlet property="saveButton" destination="QrW-Tk-mAH" id="IPX-pj-xqK"/>
                     </connections>
                 </viewController>
