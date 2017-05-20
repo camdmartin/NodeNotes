@@ -18,6 +18,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	let xBoundary = 30
 	let yBoundary = 80
 	
+	let helpMessage = "\nPress + to create a new note.\n\nSelect a note to edit it.\n\nLong press and drag to link related notes.\n\nTo remove a link, connect the nodes again.\n\nDrag a note to the bin in the bottom right to delete."
+	
 	@IBOutlet var longPress: UILongPressGestureRecognizer!
 	
 	@IBOutlet var chartView: ChartView!
@@ -55,6 +57,19 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		}
 		
 		alertController?.addAction(renameAction)
+		
+		self.present(alertController!, animated: true, completion: nil)
+	}
+	
+	@IBAction func showHelp(_ sender: UIBarButtonItem) {
+		var alertController: UIAlertController?
+		alertController = UIAlertController(title: "Welcome to NodeNotes!", message: helpMessage, preferredStyle: .alert)
+		
+		let closeAction = UIAlertAction(title: "OK", style: .default) { (paramAction:UIAlertAction!) in
+			()
+		}
+		
+		alertController?.addAction(closeAction)
 		
 		self.present(alertController!, animated: true, completion: nil)
 	}
@@ -132,6 +147,24 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		chartView.setNeedsDisplay()
 	}
 	
+	func deleteNodeWarning(button: NodeSelectButton) {
+		var alertController: UIAlertController?
+		alertController = UIAlertController(title: "Delete \(button.node!.name)", message: "Are you absolutely sure you want to delete this node? This action cannot be undone.", preferredStyle: .alert)
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (paramAction:UIAlertAction!) in
+			()
+		}
+		
+		let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (paramAction:UIAlertAction!) in
+			self.deleteNode(button: button)
+		}
+		
+		alertController?.addAction(cancelAction)
+		alertController?.addAction(deleteAction)
+		
+		self.present(alertController!, animated: true, completion: nil)
+	}
+	
 	func deleteNode(button: NodeSelectButton) {
 		
 		for n in (workspace?.nodes)! {
@@ -188,7 +221,12 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 			
 			if recognizer.state == .ended {
 				if let b = checkPointInButton(point: recognizer.location(in: self.view)) {
-					workspace?.addLink(from: b.node!, to: (selectedNode?.node)!)
+					if selectedNode!.node!.links.contains(b.node!) {
+						selectedNode!.node!.links.remove(b.node!)
+						b.node!.links.remove(selectedNode!.node!)
+					} else {
+						workspace?.addLink(from: b.node!, to: (selectedNode?.node)!)
+					}
 				}
 				
 				linkDragMode = false
@@ -219,7 +257,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 			
 			if recognizer.state == .ended {
 				if deleteZone.frame.intersects(button.frame) {
-					deleteNode(button: button)
+					deleteNodeWarning(button: button)
 				}
 				
 				chartView.setNeedsDisplay()
