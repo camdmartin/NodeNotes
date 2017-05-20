@@ -38,20 +38,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jqk-On-ytj">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqk-On-ytj">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Rename Workspace" id="1mf-FC-imB">
                                         <connections>
                                             <action selector="renameChart:" destination="JEX-9P-axG" id="j2P-R6-hXh"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uQM-Vn-WHZ"/>
+                                    <barButtonItem title="Help" id="g0b-qE-VtH"/>
                                 </items>
                             </toolbar>
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete1600.png" translatesAutoresizingMaskIntoConstraints="NO" id="ycC-s4-dj5">
+                                <rect key="frame" x="343" y="591" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="Zql-Xl-g4U"/>
+                                    <constraint firstAttribute="height" constant="32" id="sF0-Y0-SpT"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="jqk-On-ytj" secondAttribute="trailing" id="4S4-bY-Ipk"/>
+                            <constraint firstAttribute="trailing" secondItem="ycC-s4-dj5" secondAttribute="trailing" id="R4h-N4-xUt"/>
+                            <constraint firstItem="jqk-On-ytj" firstAttribute="top" secondItem="ycC-s4-dj5" secondAttribute="bottom" id="fiK-Zj-f7i"/>
+                            <constraint firstAttribute="bottom" secondItem="jqk-On-ytj" secondAttribute="bottom" id="gBi-Y3-xfd"/>
+                            <constraint firstItem="jqk-On-ytj" firstAttribute="leading" secondItem="g0e-Ic-BHp" secondAttribute="leading" id="wvC-qN-SUf"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="bKk-2Y-i4b" appends="YES" id="q0z-Oh-SvZ"/>
                         </connections>
@@ -67,6 +82,7 @@
                     <connections>
                         <outlet property="addNewNode" destination="w8H-hO-W18" id="zo7-oT-Bfq"/>
                         <outlet property="chartView" destination="g0e-Ic-BHp" id="Eb9-ru-vNe"/>
+                        <outlet property="deleteZone" destination="ycC-s4-dj5" id="LsF-mP-Oek"/>
                         <outlet property="longPress" destination="bKk-2Y-i4b" id="ieq-tU-peJ"/>
                         <outlet property="renameButton" destination="1mf-FC-imB" id="13t-Bn-MZ2"/>
                         <outlet property="toolbar" destination="jqk-On-ytj" id="e1a-lT-DrG"/>
@@ -367,6 +383,9 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="delete1600.png" width="1600" height="1600"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>

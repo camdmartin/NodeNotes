@@ -30,6 +30,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	@IBOutlet var addNewNode: UIBarButtonItem!
 	
+	@IBOutlet var deleteZone: UIImageView!
+	
 	@IBAction func addNode(_ sender: UIBarButtonItem) {
 		let n = workspace!.createNode()
 		
@@ -127,14 +129,23 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	func drawLinks() {
 		chartView.nodes = workspace?.nodes
-		chartView.draw(view.frame)
+		chartView.setNeedsDisplay()
 	}
 	
 	func deleteNode(button: NodeSelectButton) {
+		
+		for n in (workspace?.nodes)! {
+			if n.links.contains(button.node!) {
+				n.links.remove(button.node!)
+			}
+		}
+		
 		workspace?.nodes.remove(at: (workspace?.nodes.index(of: button.node!))!)
 		selectNodeButtons.remove(at: selectNodeButtons.index(of: button)!)
+		button.removeFromSuperview()
+		
+		drawLinks()
 	}
-	
 	
 	func addNodeSelectButton(node: Node, point: CGPoint)->NodeSelectButton {
 		
@@ -173,7 +184,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		if linkDragMode == true {
 			
 			chartView.temporaryNode = recognizer.location(in: self.view)
-			chartView.setNeedsDisplay()
+			drawLinks()
 			
 			if recognizer.state == .ended {
 				if let b = checkPointInButton(point: recognizer.location(in: self.view)) {
@@ -204,7 +215,15 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 			let button = recognizer.view as! NodeSelectButton
 			button.node?.location = button.frame.origin
 			
-			chartView.setNeedsDisplay()
+			drawLinks()
+			
+			if recognizer.state == .ended {
+				if deleteZone.frame.intersects(button.frame) {
+					deleteNode(button: button)
+				}
+				
+				chartView.setNeedsDisplay()
+			}
 		}
 	}
 	
