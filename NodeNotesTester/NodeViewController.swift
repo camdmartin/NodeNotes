@@ -10,31 +10,11 @@ import UIKit
 
 class NodeViewController: UIViewController, UITextViewDelegate {
 	
-	@IBOutlet var toolbar: UIToolbar!
+	@IBOutlet var nodeColorIndicator: UIView!
 	
-	@IBAction func showPopup(_ sender: UIBarButtonItem) {
-		let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editPopup") as! EditPopupViewController
-		
-		popOverVC.node = self.node
-		
-		self.addChildViewController(popOverVC)
-		
-		popOverVC.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - self.toolbar.frame.height)
-		
-		popOverVC.editPopupView.layer.cornerRadius = 12
-		popOverVC.editPopupView.layer.borderColor = UIColor.black.cgColor
-		popOverVC.editPopupView.layer.borderWidth = 3
-		
-		popOverVC.renameField.text = node.name
-		popOverVC.fontSizeSlider.value = Float(node.fontSize)
-		popOverVC.sizeSlider.value = Float(node.size)
-		popOverVC.fontSizeDisplay.text = "\(self.node.fontSize)"
-		popOverVC.nodeSizeDisplay.text = "\(self.node.size)"
-
-		self.view.addSubview(popOverVC.view)
-		
-		popOverVC.didMove(toParentViewController: self)
-	}
+	@IBOutlet var scrollView: UIScrollView!
+	
+	@IBOutlet var linkButton: UIButton!
 	
 	@IBOutlet var nodeNavigationBar: UINavigationItem!
 	
@@ -46,11 +26,19 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		super.viewDidLoad()
 		
 		nodeTextView.text = node.text
+		
+		var i = 0
+		
+		for l in node.links {
+			print("Node added")
+			linkToNode(node: l, linkPosition: i)
+			i += 1
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		nodeNavigationBar.title = node.name
-		toolbar.barTintColor = node.color
+		nodeColorIndicator.backgroundColor = node.color
 	}
 	
 	override func viewWillDisappear(_ animated : Bool) {
@@ -58,13 +46,45 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		
 		if (self.isMovingFromParentViewController) {
 			node.text = nodeTextView.text
-			//print("returning to workspace")
 		}
 	}
 	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+	func linkToNode(node: Node, linkPosition: Int) {
+		let button = NodeSelectButton(node: node, frame: CGRect(origin: CGPoint(x: (CGFloat(linkPosition) * 110) + 12, y: 12), size: CGSize(width: 75, height: 75)))
+		
+		button.setTitle(button.node?.name, for: .normal)
+		button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 10)
+		button.titleLabel?.textColor = UIColor.black
+		
+		button.layer.borderColor = button.node?.color.cgColor
+		button.layer.borderWidth = 3
+		button.layer.cornerRadius = 0.5 * button.bounds.size.width
+		
+		scrollView.addSubview(button)
+	}
+	
+	@IBAction func showPopup(_ sender: UIBarButtonItem) {
+		let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editPopup") as! EditPopupViewController
+		
+		popOverVC.node = self.node
+		
+		self.addChildViewController(popOverVC)
+		
+		popOverVC.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+		
+		popOverVC.editPopupView.layer.cornerRadius = 12
+		popOverVC.editPopupView.layer.borderColor = UIColor.black.cgColor
+		popOverVC.editPopupView.layer.borderWidth = 3
+		
+		popOverVC.renameField.text = node.name
+		popOverVC.fontSizeSlider.value = Float(node.fontSize)
+		popOverVC.sizeSlider.value = Float(node.size)
+		popOverVC.fontSizeDisplay.text = "\(self.node.fontSize)"
+		popOverVC.nodeSizeDisplay.text = "\(self.node.size)"
+		
+		self.view.addSubview(popOverVC.view)
+		
+		popOverVC.didMove(toParentViewController: self)
 	}
 
 	@IBAction func createLink(_ sender: UIBarButtonItem) {
