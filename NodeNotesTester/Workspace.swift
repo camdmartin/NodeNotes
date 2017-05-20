@@ -107,24 +107,82 @@ class Workspace {
 		ke.color = UIColor.purple
 		ke.size = 100
 		ke.fontSize = 12
+		ke.text = "The kinetic energy of an object is the energy that it possesses due to its motion. KE = 1/2mv^2"
 		
 		let elec = createNodeWithName(name: "Electricity", x: 200, y: 470)
 		elec.color = UIColor.yellow
 		elec.size = 200
 		elec.fontSize = 18
+		elec.text = "Electricity is the set of physical phenomena associated with the presence of electric charge."
 		
 		let laws = createNodeWithName(name: "Newton's Laws", x: 200, y: 250)
 		laws.color = UIColor.green
 		laws.size = 100
 		laws.fontSize = 12
+		laws.text = "Newton's First Law of Motion is the Law of Inertia, and the Second Law of Motion expresses the relationship between force, mass and acceleration (f = ma). The Third Law of Motion states that \"for every action, there is an equal and opposite reaction.\""
 		
 		let gravitation = createNodeWithName(name: "Gravitation", x: 75, y: 300)
 		gravitation.color = UIColor.lightGray
 		gravitation.size = 100
 		gravitation.fontSize = 12
+		gravitation.text = "Gravity, or gravitation, is a natural phenomenon by which all things with mass are brought toward one another, including planets, stars and galaxies. F = (Gm1m2)/(r^2)"
 		
 		addLink(from: mech, to: laws)
 		addLink(from: mech, to: ke)
 		addLink(from: mech, to: gravitation)
+	}
+	
+	func addProjectData() {
+		let mvc = createNodeWithName(name: "MasterViewController", x: 25, y: 80)
+		mvc.color = UIColor.green
+		mvc.size = 130
+		
+		let dvc = createNodeWithName(name: "DetailViewController", x: 60, y: 225)
+		dvc.color = UIColor.blue
+		dvc.size = 160
+		
+		let nvc = createNodeWithName(name: "NodeViewController", x: 115, y: 400)
+		nvc.color = UIColor.red
+		nvc.size = 150
+		
+		let epv = createNodeWithName(name: "EditPopupView", x:300, y: 440)
+		epv.color = UIColor.purple
+		epv.size = 80
+		epv.fontSize = 10
+		
+		let hsv = createNodeWithName(name: "HSVColorPicker", x: 300, y: 550)
+		hsv.color = UIColor.lightGray
+		hsv.size = 72
+		hsv.fontSize = 8
+		
+		let nsb = createNodeWithName(name: "NodeSelectButton", x: 330, y: 250)
+		nsb.color = UIColor.yellow
+		nsb.size = 70
+		nsb.fontSize = 8
+		
+		let cv = createNodeWithName(name: "ChartView", x: 20, y: 400)
+		cv.color = UIColor.black
+		cv.size = 70
+		
+		let n = createNodeWithName(name: "Node", x:280, y: 190)
+		n.color = UIColor.darkGray
+		n.size = 50
+		
+		let w = createNodeWithName(name: "Workspace", x: 200, y: 110)
+		w.color = UIColor.brown
+		w.size = 75
+		
+		addLink(from: mvc, to: dvc)
+		addLink(from: mvc, to: w)
+		addLink(from: w, to: n)
+		addLink(from: n, to: dvc)
+		addLink(from: n, to: nsb)
+		addLink(from: n, to: nvc)
+		addLink(from: dvc, to: cv)
+		addLink(from: dvc, to: nvc)
+		addLink(from: nvc, to: epv)
+		addLink(from: dvc, to: nsb)
+		addLink(from: nsb, to: nvc)
+		addLink(from: epv, to: hsv)
 	}
 }
