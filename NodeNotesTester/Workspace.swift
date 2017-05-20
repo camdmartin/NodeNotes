@@ -55,6 +55,12 @@ class Workspace {
 		to.links.insert(from)
 	}
 	
+	func printNodes() {
+		for n in nodes {
+			print(n)
+		}
+	}
+	
 	func addTestData() {
 		let physics = createNodeWithName(name: "Physics E&M", x: 50, y: 325)
 		physics.color = UIColor.blue
@@ -88,5 +94,37 @@ class Workspace {
 		addLink(from: physics, to: calculus)
 		addLink(from: programming, to: calculus)
 		addLink(from: english, to: history)
+	}
+	
+	func addDemoData() {
+		let mech = createNodeWithName(name: "Mechanics", x: 25, y: 75)
+		mech.color = UIColor.blue
+		mech.size = 200
+		mech.fontSize = 24
+		mech.text = "Mechanics is the set of physical laws describing the motion of bodies under the influence of a system of forces."
+		
+		let ke = createNodeWithName(name: "Kinetic Energy", x: 245, y: 125)
+		ke.color = UIColor.purple
+		ke.size = 100
+		ke.fontSize = 12
+		
+		let elec = createNodeWithName(name: "Electricity", x: 200, y: 470)
+		elec.color = UIColor.yellow
+		elec.size = 200
+		elec.fontSize = 18
+		
+		let laws = createNodeWithName(name: "Newton's Laws", x: 200, y: 250)
+		laws.color = UIColor.green
+		laws.size = 100
+		laws.fontSize = 12
+		
+		let gravitation = createNodeWithName(name: "Gravitation", x: 75, y: 300)
+		gravitation.color = UIColor.lightGray
+		gravitation.size = 100
+		gravitation.fontSize = 12
+		
+		addLink(from: mech, to: laws)
+		addLink(from: mech, to: ke)
+		addLink(from: mech, to: gravitation)
 	}
 }

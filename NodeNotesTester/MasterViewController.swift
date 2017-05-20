@@ -53,13 +53,18 @@ class MasterViewController: UITableViewController {
 	}
 	
 	func insertTestWorkspace() {
-		let newWorkspace = Workspace(name: "Classes")
-		newWorkspace.addTestData()
+		let demo1 = Workspace(name: "Classes")
+		demo1.addTestData()
 		
-		objects.insert(newWorkspace, at: 0)
+		objects.insert(demo1, at: 0)
 		let indexPath = IndexPath(row: 0, section: 0)
 		self.tableView.insertRows(at: [indexPath], with: .automatic)
-
+		
+		let demo2 = Workspace(name: "Demonstration Chart")
+		demo2.addDemoData()
+		
+		objects.insert(demo2, at: 0)
+		self.tableView.insertRows(at: [indexPath], with: .automatic)
 	}
 	
 	func renameChart(workspace: Workspace) {

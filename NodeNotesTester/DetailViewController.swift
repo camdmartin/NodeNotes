@@ -62,6 +62,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	}
 	
 	@IBAction func showHelp(_ sender: UIBarButtonItem) {
+		workspace?.printNodes()
+		
 		var alertController: UIAlertController?
 		alertController = UIAlertController(title: "Welcome to NodeNotes!", message: helpMessage, preferredStyle: .alert)
 		
