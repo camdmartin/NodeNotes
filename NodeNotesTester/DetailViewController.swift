@@ -12,11 +12,14 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	var workspace: Workspace?
 	var selectNodeButtons = [NodeSelectButton]()
-	var selectedNode: Node?
+	var selectedNode: NodeSelectButton?
+	var linkDragMode = false
 	
 	let xBoundary = 30
 	let yBoundary = 80
-
+	
+	@IBOutlet var longPress: UILongPressGestureRecognizer!
+	
 	@IBOutlet var chartView: ChartView!
 	
 	@IBOutlet var renameButton: UIBarButtonItem!
@@ -110,14 +113,14 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	}
 	
 	func selectNode(sender: NodeSelectButton) {
-		selectedNode = sender.node
+		selectedNode = sender
 		
 		guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "NodeViewController") as? NodeViewController else {
 			print("Could not instantiate view controller with identifier of type NodeViewController")
 			return
 		}
 		
-		vc.node = selectedNode!
+		vc.node = selectedNode!.node!
 		vc.navigationController?.navigationBar.barTintColor = vc.node.color
 		self.navigationController?.pushViewController(vc, animated:true)
 	}
@@ -125,6 +128,11 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	func drawLinks() {
 		chartView.nodes = workspace?.nodes
 		chartView.draw(view.frame)
+	}
+	
+	func deleteNode(button: NodeSelectButton) {
+		workspace?.nodes.remove(at: (workspace?.nodes.index(of: button.node!))!)
+		selectNodeButtons.remove(at: selectNodeButtons.index(of: button)!)
 	}
 	
 	
@@ -146,7 +154,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 		button.tag = 1
 		
 		self.view.addSubview(button)
-
+		
 		renameNodeButton(button: button)
 		
 		let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DetailViewController.handlePan(_:)))
@@ -159,27 +167,70 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	}
 	
 	//node dragging code
-	@IBAction func handlePan(_ recognizer:UIPanGestureRecognizer) {
+	@IBAction func handlePan(_ recognizer: UIPanGestureRecognizer) {
 		let translation = recognizer.translation(in: self.view)
+		
+		if linkDragMode == true {
+			
+			chartView.temporaryNode = recognizer.location(in: self.view)
+			chartView.setNeedsDisplay()
+			
+			if recognizer.state == .ended {
+				if let b = checkPointInButton(point: recognizer.location(in: self.view)) {
+					workspace?.addLink(from: b.node!, to: (selectedNode?.node)!)
+				}
+				
+				linkDragMode = false
+				chartView.selectedNode = nil
+				chartView.temporaryNode = nil
+				chartView.setNeedsDisplay()
+			}
+			
+		} else {
 
-		if let view = recognizer.view {
-			
-			let viewCenter = CGPoint(x:view.center.x + translation.x,
-	                      y:view.center.y + translation.y)
-			let superview = view.superview!
-			
-			if ((CGFloat(xBoundary)) < viewCenter.x && viewCenter.x < (superview.frame.width - CGFloat(xBoundary))) {
-				if (CGFloat(yBoundary) < viewCenter.y && viewCenter.y < (superview.frame.height - CGFloat(yBoundary))) {
-					view.center = viewCenter
+			if let view = recognizer.view {
+				
+				let viewCenter = CGPoint(x:view.center.x + translation.x,
+				                         y:view.center.y + translation.y)
+				let superview = view.superview!
+				
+				if ((CGFloat(xBoundary)) < viewCenter.x && viewCenter.x < (superview.frame.width - CGFloat(xBoundary))) {
+					if (CGFloat(yBoundary) < viewCenter.y && viewCenter.y < (superview.frame.height - CGFloat(yBoundary))) {
+						view.center = viewCenter
+					}
 				}
 			}
+			recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
+			let button = recognizer.view as! NodeSelectButton
+			button.node?.location = button.frame.origin
+			
+			chartView.setNeedsDisplay()
 		}
-		recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
-		let button = recognizer.view as! NodeSelectButton
-		button.node?.location = button.frame.origin
-		
-		chartView.setNeedsDisplay()
 	}
 	
+	@IBAction func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
+		
+		if linkDragMode == false {
+			if let b = checkPointInButton(point: recognizer.location(in: chartView)) {
+				selectedNode = b
+				chartView.selectedNode = b
+				linkDragMode = true
+			}
+		}
+	}
+	
+	func checkPointInButton(point: CGPoint) -> NodeSelectButton? {
+		for b in selectNodeButtons {
+			if b.frame.contains(point) {
+				return b
+			}
+		}
+		
+		return nil
+	}
+	
+	func gestureRecognizer(_: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith shouldRecognizeSimultaneouslyWithGestureRecognizer: UIGestureRecognizer) -> Bool {
+		return true
+	}
 }
 

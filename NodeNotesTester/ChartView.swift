@@ -11,25 +11,35 @@ import UIKit
 
 class ChartView: UIView {
 	
-	var nodes: [Node]? = nil
+	var nodes: [Node]?
+	var selectedNode: NodeSelectButton?
+	var temporaryNode: CGPoint?
 	
 	override func draw(_ rect: CGRect) {
 		
 		for n in nodes! {
 			for l in n.links {
-				let line = UIBezierPath()
-				
-				line.move(to: n.getNodeCenter())
-				
-				line.addLine(to: l.getNodeCenter())
-				
-				line.close()
-				
-				line.lineWidth = 2.0
-				
-				line.stroke()
+				drawNodeLink(from: n.getNodeCenter(), to: l.getNodeCenter())
 			}
 		}
+		
+		if let t = temporaryNode, let s = selectedNode?.node {
+			drawNodeLink(from: s.getNodeCenter(), to: t)
+		}
+	}
+	
+	func drawNodeLink(from: CGPoint, to: CGPoint) {
+		let line = UIBezierPath()
+		
+		line.move(to: from)
+		
+		line.addLine(to: to)
+		
+		line.close()
+		
+		line.lineWidth = 2.0
+		
+		line.stroke()
 	}
 }
 

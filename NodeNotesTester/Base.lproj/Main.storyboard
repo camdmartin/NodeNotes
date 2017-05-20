@@ -51,6 +51,10 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="bKk-2Y-i4b" appends="YES" id="q0z-Oh-SvZ"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Chart" id="mOI-FS-AaM">
@@ -63,6 +67,7 @@
                     <connections>
                         <outlet property="addNewNode" destination="w8H-hO-W18" id="zo7-oT-Bfq"/>
                         <outlet property="chartView" destination="g0e-Ic-BHp" id="Eb9-ru-vNe"/>
+                        <outlet property="longPress" destination="bKk-2Y-i4b" id="ieq-tU-peJ"/>
                         <outlet property="renameButton" destination="1mf-FC-imB" id="13t-Bn-MZ2"/>
                         <outlet property="toolbar" destination="jqk-On-ytj" id="e1a-lT-DrG"/>
                         <outlet property="workspaceNavigationBar" destination="mOI-FS-AaM" id="KQV-8C-Adw"/>
@@ -70,6 +75,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="bKk-2Y-i4b">
+                    <connections>
+                        <action selector="handleLongPress:" destination="JEX-9P-axG" id="HGJ-q2-4c8"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="708" y="128.18590704647679"/>
         </scene>
@@ -89,15 +99,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Insert node text here" translatesAutoresizingMaskIntoConstraints="NO" id="GMM-cr-jbK">
-                                        <rect key="frame" x="12" y="0.0" width="351" height="473"/>
+                                        <rect key="frame" x="12" y="0.0" width="351" height="503"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehH-JC-Z4X">
-                                        <rect key="frame" x="157.5" y="473" width="60" height="30"/>
-                                        <state key="normal" title="Add Link"/>
-                                    </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wa4-0V-QN2">
                                         <rect key="frame" x="0.0" y="503" width="375" height="100"/>
                                         <constraints>
@@ -131,7 +137,6 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="linkButton" destination="ehH-JC-Z4X" id="0kz-rQ-2R6"/>
                         <outlet property="nodeNavigationBar" destination="5YR-N5-2xn" id="w0B-DK-5kc"/>
                         <outlet property="nodeTextView" destination="GMM-cr-jbK" id="6En-z4-EOb"/>
                         <outlet property="scrollView" destination="Wa4-0V-QN2" id="Ku6-zl-Afj"/>
