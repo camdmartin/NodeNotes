@@ -9,9 +9,7 @@
 import UIKit
 
 class NodeViewController: UIViewController, UITextViewDelegate {
-	
-	@IBOutlet var nodeColorIndicator: UIView!
-	
+		
 	@IBOutlet var scrollView: UIScrollView!
 	
 	@IBOutlet var linkButton: UIButton!
@@ -30,7 +28,6 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		var i = 0
 		
 		for l in node.links {
-			print("Node added")
 			linkToNode(node: l, linkPosition: i)
 			i += 1
 		}
@@ -38,7 +35,7 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		nodeNavigationBar.title = node.name
-		nodeColorIndicator.backgroundColor = node.color
+		scrollView.backgroundColor = node.color
 	}
 	
 	override func viewWillDisappear(_ animated : Bool) {
@@ -50,17 +47,35 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	}
 	
 	func linkToNode(node: Node, linkPosition: Int) {
-		let button = NodeSelectButton(node: node, frame: CGRect(origin: CGPoint(x: (CGFloat(linkPosition) * 110) + 12, y: 12), size: CGSize(width: 75, height: 75)))
+		let button = NodeSelectButton(node: node, frame: CGRect(origin: CGPoint(x: (CGFloat(linkPosition) * 88 + 8), y: 12), size: CGSize(width: 80, height: 80)))
 		
 		button.setTitle(button.node?.name, for: .normal)
 		button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 10)
-		button.titleLabel?.textColor = UIColor.black
+		button.addTarget(self, action: #selector(selectNodeFromLink(_:)), for: .touchUpInside)
+		
+		button.backgroundColor = UIColor.white
+		
+		button.setTitleColor(UIColor.black, for: .normal)
 		
 		button.layer.borderColor = button.node?.color.cgColor
 		button.layer.borderWidth = 3
 		button.layer.cornerRadius = 0.5 * button.bounds.size.width
 		
 		scrollView.addSubview(button)
+	}
+	
+	func selectNodeFromLink(_ sender: NodeSelectButton) {
+		
+		guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "NodeViewController") as? NodeViewController else {
+			print("Could not instantiate view controller with identifier of type NodeViewController")
+			return
+		}
+		
+		vc.node = sender.node!
+		vc.navigationController?.navigationBar.barTintColor = vc.node.color
+		
+		self.navigationController?.popViewController(animated: true)
+		self.navigationController?.pushViewController(vc, animated:true)
 	}
 	
 	@IBAction func showPopup(_ sender: UIBarButtonItem) {

@@ -29,7 +29,6 @@ class EditPopupViewController: UIViewController {
 	@IBOutlet var saveButton: UIButton!
 	
 	override func viewDidLoad() {
-		//self.showAnimate()
 		sizeSlider.value = Float(node!.size)
 		hsvColorPicker.setViewColor(node!.color)
 	}
@@ -52,7 +51,6 @@ class EditPopupViewController: UIViewController {
 		let vc = self.parent as! NodeViewController
 		vc.nodeNavigationBar.title = node?.name
 		vc.scrollView.backgroundColor = node?.color
-		vc.nodeColorIndicator.backgroundColor = node?.color
 		
 		self.view.removeFromSuperview()
 	}
