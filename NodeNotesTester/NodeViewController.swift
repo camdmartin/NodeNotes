@@ -100,39 +100,6 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		self.view.addSubview(popOverVC.view)
 		
 		popOverVC.didMove(toParentViewController: self)
-	}
-
-	@IBAction func createLink(_ sender: UIBarButtonItem) {
-		var alertController: UIAlertController?
-		alertController = UIAlertController(title: "Enter Text", message: "Link Text", preferredStyle: .alert)
-		alertController!.addTextField {
-			(textField: UITextField) in textField.placeholder = "enter something"
-		}
-		
-		let action = UIAlertAction(title: "Submit",
-		                           style: UIAlertActionStyle.default,
-		                           handler: {[weak self]
-									(paramAction:UIAlertAction!) in
-									if let textFields = alertController?.textFields{
-										let theTextFields = textFields as [UITextField]
-										var enteredText = theTextFields[0].text
-										let enteredString = NSAttributedString(
-											string: enteredText!,
-											attributes: [NSFontAttributeName:UIFont(
-												name: "Georgia",
-												size: 18.0)!, NSForegroundColorAttributeName: UIColor.blue])
-										enteredText = enteredString.string
-										self?.nodeTextView.text = (self?.nodeTextView.text)! + " " + enteredText!
-									}
-		})
-		alertController?.addAction(action)
-		self.present(alertController!,
-		             animated: true,
-		             completion: nil)
-		
-		
-		print("Linked")
-	}
-	
+	}	
 }
 

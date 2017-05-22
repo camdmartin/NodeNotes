@@ -51,7 +51,6 @@ class EditPopupViewController: UIViewController {
 		let vc = self.parent as! NodeViewController
 		vc.nodeNavigationBar.title = node?.name
 		vc.scrollView.backgroundColor = node?.color
-		
 		self.view.removeFromSuperview()
 	}
 	

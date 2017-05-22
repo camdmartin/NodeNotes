@@ -16,7 +16,7 @@ class Node: Hashable, CustomStringConvertible {
 	var links: Set<Node>
 	var location: CGPoint
 	var color = UIColor.lightGray
-	var size = 50
+	var size = 100
 	var fontSize = 12
 	
 	var description: String {

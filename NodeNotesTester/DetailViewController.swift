@@ -15,10 +15,10 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	var selectedNode: NodeSelectButton?
 	var linkDragMode = false
 	
-	let xBoundary = 30
+	let xBoundary = 50
 	let yBoundary = 80
 	
-	let helpMessage = "\nPress + to create a new note.\n\nSelect a note to edit it.\n\nLong press and drag to link related notes.\n\nTo remove a link, connect the nodes again.\n\nDrag a note to the bin in the bottom right to delete."
+	let helpMessage = "\nPress + to create a new note.\n\nSelect a note and press Edit to edit it.\n\nLong press and drag to link related notes.\n\nTo remove a link, connect the nodes again.\n\nDrag a note to the bin in the bottom right to delete."
 	
 	@IBOutlet var longPress: UILongPressGestureRecognizer!
 	
@@ -232,6 +232,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 				}
 				
 				linkDragMode = false
+				self.selectedNode = nil
 				chartView.selectedNode = nil
 				chartView.temporaryNode = nil
 				chartView.setNeedsDisplay()
