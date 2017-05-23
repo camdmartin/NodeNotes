@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class NodeViewController: UIViewController, UITextViewDelegate {
 	
@@ -33,8 +34,12 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	
 	@IBOutlet var nodeTextView: UITextView!
 	
+
 	var node = Node(name: "Default", value: -1)
 	
+   // var attributes = Array<Array<Int>>()
+    var addedAttributes = Array<String>()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -75,13 +80,23 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 									if let textFields = alertController?.textFields{
 										let theTextFields = textFields as [UITextField]
 										var enteredText = theTextFields[0].text
-										let enteredString = NSAttributedString(
-											string: enteredText!,
+										var enteredString = NSMutableAttributedString(
+											string: (self?.nodeTextView.text)! + " " + enteredText!,
 											attributes: [NSFontAttributeName: UIFont(
-												name: "Georgia",
-												size: 9.0)!, NSForegroundColorAttributeName: UIColor.blue])
+                                        name: "System Font Regular",
+                                        size: 14.0)!])
+                                        self?.addedAttributes.append((enteredText)!)
+                                        for attribute in (self?.addedAttributes)!{
+                                            if (enteredString.string.contains(attribute)){
+                                            enteredString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blue, range: NSRange(
+                                                location: enteredString.string.distance(from: enteredString.string.startIndex, to: enteredString.string.range(of: attribute)!.lowerBound),
+                                                length:(enteredText?.characters.count)!))
+                                        }
+                                        }
+											//, NSForegroundColorAttributeName: UIColor.blue])**/
 										enteredText = enteredString.string
-										self?.nodeTextView.attributedText = /**(self?.nodeTextView.text)! + " " + **/enteredString
+                                        print(enteredString.string)
+										self?.nodeTextView.attributedText = enteredString
 									}
                                     
 		})
