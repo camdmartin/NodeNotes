@@ -18,7 +18,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 	let xBoundary = 50
 	let yBoundary = 80
 	
-	let helpMessage = "\nPress + to create a new note.\n\nSelect a note and press Edit to edit it.\n\nLong press and drag to link related notes.\n\nTo remove a link, connect the nodes again.\n\nDrag a note to the bin in the bottom right to delete."
+	let helpMessage = "\nPress + to create a new note.\n\nSelect a note to write in it. Press Edit to edit its properties.\n\nLong press and drag to link related notes.\n\nTo remove a link, connect the nodes again.\n\nDrag a note to the bin in the bottom right to delete."
 	
 	@IBOutlet var longPress: UILongPressGestureRecognizer!
 	

@@ -12,8 +12,6 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		
 	@IBOutlet var scrollView: UIScrollView!
 	
-	@IBOutlet var linkButton: UIButton!
-	
 	@IBOutlet var nodeNavigationBar: UINavigationItem!
 	
 	@IBOutlet var nodeTextView: UITextView!
@@ -36,6 +34,8 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		nodeNavigationBar.title = node.name
 		scrollView.backgroundColor = node.color
+		scrollView.isScrollEnabled = true
+		scrollView.contentSize = CGSize(width: 2000, height: scrollView.frame.height)
 	}
 	
 	override func viewWillDisappear(_ animated : Bool) {

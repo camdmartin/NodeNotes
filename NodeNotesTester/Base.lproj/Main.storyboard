@@ -369,23 +369,6 @@
             </objects>
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Mcv-sV-aYr">
-            <objects>
-                <viewController id="mLn-jN-Pw6" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uKK-hq-heb"/>
-                        <viewControllerLayoutGuide type="bottom" id="AvR-0y-8Er"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cMj-mh-IfT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fN2-fE-jrU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="delete1600.png" width="1600" height="1600"/>
