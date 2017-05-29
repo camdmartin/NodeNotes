@@ -18,6 +18,44 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	
 	@IBOutlet var nodeTextView: UITextView!
 	
+    @IBOutlet var swipeLeft: UISwipeGestureRecognizer!
+    
+    @IBAction func handleSwipeLeft(_ sender: UISwipeGestureRecognizer) {
+        if let swipeGesture = swipeLeft as? UISwipeGestureRecognizer {
+            
+            
+            
+            switch swipeGesture.direction {
+                
+                
+                
+            case UISwipeGestureRecognizerDirection.left:
+               
+                //change view controllers
+                
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                
+                
+                
+                let resultViewController = storyBoard.instantiateViewController(withIdentifier: "drawViewID") as! drawViewController
+                
+                
+                
+                self.present(resultViewController, animated:true, completion:nil)
+                
+                
+                
+                
+                
+            default:
+                
+                break
+                
+            }
+            
+        }
+    }
+ 
 	var node = Node(name: "Default", value: -1)
 	
 	override func viewDidLoad() {
