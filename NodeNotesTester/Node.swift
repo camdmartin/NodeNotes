@@ -18,6 +18,7 @@ class Node: Hashable, CustomStringConvertible {
 	var color = UIColor.lightGray
 	var size = 100
 	var fontSize = 12
+	var drawnImage = UIImage()
 	
 	var description: String {
 		return "\(name): size \(size), location (\(location.x), \(location.y))"

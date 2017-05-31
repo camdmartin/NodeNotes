@@ -21,6 +21,8 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 	@IBAction func openDrawView(_ sender: UIBarButtonItem) {
 		let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 		let resultViewController = storyBoard.instantiateViewController(withIdentifier: "drawViewID") as! drawViewController
+		resultViewController.node = self.node
+		resultViewController.drawingView.image = self.node.drawnImage
 		self.present(resultViewController, animated:true, completion:nil)
 	}
  
@@ -82,7 +84,7 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		vc.node = sender.node!
 		vc.navigationController?.navigationBar.barTintColor = vc.node.color
 		
-		self.navigationController?.popViewController(animated: true)
+		//self.navigationController?.popViewController(animated: true)
 		self.navigationController?.pushViewController(vc, animated:true)
 	}
 	

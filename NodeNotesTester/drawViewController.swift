@@ -13,12 +13,13 @@ class drawViewController: UIViewController {
     
     @IBOutlet var tempView: TempCanvasView!
     
-    
     @IBOutlet var drawingView: drawView!
     
     var lastPoint = CGPoint.zero
     var swiped = false
-    
+	var node = Node(name: "Default", value: -1)
+	
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         swiped = false
         lastPoint = (touches.first?.location(in: self.view))!
@@ -45,12 +46,10 @@ class drawViewController: UIViewController {
         
         drawingView.image = UIGraphicsGetImageFromCurrentImageContext()
         
-        drawingView.savedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        drawingView.image = UIGraphicsGetImageFromCurrentImageContext()!
         
         UIGraphicsEndImageContext()
-        
-        //tempView.image = nil
-    }
+	}
     
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
         UIGraphicsBeginImageContext(view.frame.size)
@@ -68,15 +67,19 @@ class drawViewController: UIViewController {
         
         tempView.image = UIGraphicsGetImageFromCurrentImageContext()
     }
-    
-    
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawingView.draw()
-        drawingView.image = drawingView.savedImage
-    
+		
+		drawingView.image = node.drawnImage
+		drawingView.setNeedsDisplay()
     }
-    
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		print("saving image")
+		node.drawnImage = drawingView.image!
+	}
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
