@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EFDAD801EDC16F100E78DA8 /* drawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDAD7F1EDC16F100E78DA8 /* drawView.swift */; };
+		0EFDAD821EDC173C00E78DA8 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDAD811EDC173C00E78DA8 /* Line.swift */; };
+		0EFDAD841EDC179F00E78DA8 /* drawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDAD831EDC179F00E78DA8 /* drawViewController.swift */; };
+		0EFDAD861EDE4DB400E78DA8 /* WorldMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDAD851EDE4DB400E78DA8 /* WorldMap.swift */; };
+		0EFDAD881EDE4DF600E78DA8 /* TempCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDAD871EDE4DF600E78DA8 /* TempCanvasView.swift */; };
 		A413B68D1E9BDDB500793989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B68C1E9BDDB500793989 /* AppDelegate.swift */; };
 		A413B68F1E9BDDB500793989 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B68E1E9BDDB500793989 /* MasterViewController.swift */; };
 		A413B6911E9BDDB500793989 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B6901E9BDDB500793989 /* DetailViewController.swift */; };
@@ -28,6 +33,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EFDAD7F1EDC16F100E78DA8 /* drawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = drawView.swift; sourceTree = "<group>"; };
+		0EFDAD811EDC173C00E78DA8 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		0EFDAD831EDC179F00E78DA8 /* drawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = drawViewController.swift; sourceTree = "<group>"; };
+		0EFDAD851EDE4DB400E78DA8 /* WorldMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldMap.swift; sourceTree = "<group>"; };
+		0EFDAD871EDE4DF600E78DA8 /* TempCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempCanvasView.swift; sourceTree = "<group>"; };
 		A413B6891E9BDDB500793989 /* NodeNotesTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NodeNotesTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A413B68C1E9BDDB500793989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A413B68E1E9BDDB500793989 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -86,8 +96,13 @@
 				A413B6901E9BDDB500793989 /* DetailViewController.swift */,
 				A41A28301ECF7912001DD315 /* ChartView.swift */,
 				A413B6A61E9EA35E00793989 /* NodeSelectButton.swift */,
-				A413B6921E9BDDB500793989 /* Main.storyboard */,
 				A413B6A21E9E85FF00793989 /* Workspace.swift */,
+				A413B6921E9BDDB500793989 /* Main.storyboard */,
+				0EFDAD851EDE4DB400E78DA8 /* WorldMap.swift */,
+				0EFDAD7F1EDC16F100E78DA8 /* drawView.swift */,
+				0EFDAD871EDE4DF600E78DA8 /* TempCanvasView.swift */,
+				0EFDAD831EDC179F00E78DA8 /* drawViewController.swift */,
+				0EFDAD811EDC173C00E78DA8 /* Line.swift */,
 				A413B6A41E9E863C00793989 /* Node.swift */,
 				A413B6A01E9BE57300793989 /* NodeViewController.swift */,
 				A4A5A6BB1ECF46C8003E4810 /* EditPopupViewController.swift */,
@@ -184,20 +199,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFDAD801EDC16F100E78DA8 /* drawView.swift in Sources */,
 				A4A5A6BC1ECF46C8003E4810 /* EditPopupViewController.swift in Sources */,
 				A4A5A6AF1ECF405B003E4810 /* ColorUtils.swift in Sources */,
+				0EFDAD881EDE4DF600E78DA8 /* TempCanvasView.swift in Sources */,
 				A413B6A11E9BE57300793989 /* NodeViewController.swift in Sources */,
 				A41A28311ECF7912001DD315 /* ChartView.swift in Sources */,
 				A413B6911E9BDDB500793989 /* DetailViewController.swift in Sources */,
 				A413B6A31E9E85FF00793989 /* Workspace.swift in Sources */,
+				0EFDAD861EDE4DB400E78DA8 /* WorldMap.swift in Sources */,
 				A4A5A6AE1ECF405B003E4810 /* BrightnessView.swift in Sources */,
 				A413B6A71E9EA35F00793989 /* NodeSelectButton.swift in Sources */,
 				A413B6A51E9E863C00793989 /* Node.swift in Sources */,
 				A4A5A6B21ECF405B003E4810 /* SwiftHSVColorPicker.swift in Sources */,
 				A413B68F1E9BDDB500793989 /* MasterViewController.swift in Sources */,
 				A413B68D1E9BDDB500793989 /* AppDelegate.swift in Sources */,
+				0EFDAD821EDC173C00E78DA8 /* Line.swift in Sources */,
 				A4A5A6B01ECF405B003E4810 /* ColorWheel.swift in Sources */,
 				A4A5A6B11ECF405B003E4810 /* SelectedColorView.swift in Sources */,
+				0EFDAD841EDC179F00E78DA8 /* drawViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
