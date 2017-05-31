@@ -10,9 +10,10 @@ import UIKit
 
 class drawView: UIImageView {
     
-    var currentMap = WorldMap(width: 800, height: 800)
+    var currentMap = WorldMap(width: 1000, height: 1000)
     var bg = UIImageView()
     var lf = UIImageView()
+    var savedImage = UIImage()
     
     let layers = Dictionary<Int, UIImageView>()
     

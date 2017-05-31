@@ -18,7 +18,7 @@ class WorldMap {
     init(width: Int, height: Int) {
         self.height = height
         self.width = width
-        self.background = UIImage(color: UIColor.blue, size: CGSize(width: self.width, height: self.height))!
+        self.background = UIImage(color: UIColor.white, size: CGSize(width: self.width, height: self.height))!
         self.landforms = self.background
     }
 }

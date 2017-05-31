@@ -45,9 +45,11 @@ class drawViewController: UIViewController {
         
         drawingView.image = UIGraphicsGetImageFromCurrentImageContext()
         
+        drawingView.savedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
         UIGraphicsEndImageContext()
         
-        tempView.image = nil
+        //tempView.image = nil
     }
     
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
@@ -71,6 +73,8 @@ class drawViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         drawingView.drawMap()
+        drawingView.image = drawingView.savedImage
+    
     }
     
     override func didReceiveMemoryWarning() {
