@@ -9,50 +9,20 @@
 import UIKit
 
 class NodeViewController: UIViewController, UITextViewDelegate {
-		
+	
 	@IBOutlet var scrollView: UIScrollView!
 	
 	@IBOutlet var nodeNavigationBar: UINavigationItem!
 	
 	@IBOutlet var nodeTextView: UITextView!
 	
-    @IBOutlet var swipeLeft: UISwipeGestureRecognizer!
-    
-    @IBAction func handleSwipeLeft(_ sender: UISwipeGestureRecognizer) {
-        if let swipeGesture = swipeLeft as? UISwipeGestureRecognizer {
-            
-            
-            
-            switch swipeGesture.direction {
-                
-                
-                
-            case UISwipeGestureRecognizerDirection.left:
-               
-                //change view controllers
-                
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                
-                
-                
-                let resultViewController = storyBoard.instantiateViewController(withIdentifier: "drawViewID") as! drawViewController
-                
-                
-                
-                self.present(resultViewController, animated:true, completion:nil)
-                
-                
-                
-                
-                
-            default:
-                
-                break
-                
-            }
-            
-        }
-    }
+	@IBOutlet var swipeLeft: UISwipeGestureRecognizer!
+	
+	@IBAction func openDrawView(_ sender: UIBarButtonItem) {
+		let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+		let resultViewController = storyBoard.instantiateViewController(withIdentifier: "drawViewID") as! drawViewController
+		self.present(resultViewController, animated:true, completion:nil)
+	}
  
 	var node = Node(name: "Default", value: -1)
 	
@@ -138,6 +108,6 @@ class NodeViewController: UIViewController, UITextViewDelegate {
 		self.view.addSubview(popOverVC.view)
 		
 		popOverVC.didMove(toParentViewController: self)
-	}	
+	}
 }
 

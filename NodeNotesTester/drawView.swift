@@ -10,38 +10,19 @@ import UIKit
 
 class drawView: UIImageView {
     
-    var currentMap = WorldMap(width: 1000, height: 1000)
     var bg = UIImageView()
-    var lf = UIImageView()
     var savedImage = UIImage()
-    
-    let layers = Dictionary<Int, UIImageView>()
-    
+	
     func setBackgroundLayer() -> UIImageView {
-        let bg = currentMap.background
         let layer = UIImageView()
-        layer.image = bg
+        layer.image = bg.image
         addSubview(layer)
         layer.isOpaque = true
-        layer.frame = CGRect(x: 0, y: 0, width: currentMap.width, height: currentMap.height)
+        layer.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         return layer
     }
-    
-    func setLandformsLayer() -> UIImageView {
-        let lf = currentMap.landforms
-        let layer = UIImageView()
-        layer.image = lf
-        addSubview(layer)
-        layer.isOpaque = true
-        layer.frame = CGRect(x: 0, y: 0, width: currentMap.width, height: currentMap.height)
-        return layer
-    }
-    
-    func drawMap() {
+	
+    func draw() {
         bg = setBackgroundLayer()
-        lf = setLandformsLayer()
     }
-    
-    
-    
 }

@@ -62,7 +62,7 @@ class drawViewController: UIViewController {
         context?.addLine(to: toPoint)
         
         context?.setLineCap(.round)
-        context?.setLineWidth(10.0)
+        context?.setLineWidth(5.0)
         
         context?.strokePath()
         
@@ -72,7 +72,7 @@ class drawViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawingView.drawMap()
+        drawingView.draw()
         drawingView.image = drawingView.savedImage
     
     }
